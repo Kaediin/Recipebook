@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new recipe</title>
+</head>
+{% include "header.html" %}
+<body>
+<form method="post" action="../Recipe/Add" id="form">
+    {% csrf_token %}
+    <input type="text" name="title_new_recipe">
+    <input type="text" name="description_new_recipe">
+    <input type="text" name="ingredients_new_recipe">
+    <input type="text" name="method_new_recipe">
+    <input type="number" name="est_time_new_recipe">
+    <input type="file" name="imgs_new_recipe" id="files">
+    <input type="hidden" name="url" id="url">
+    <input type="button" value="Add recipe" onclick="uploadimage()">
+</form>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyBvdVFeFAfNvk3syObxsVSu4qYQPR3eAE0",
+        authDomain: "cookbook-d364e.firebaseapp.com",
+        databaseURL: "https://cookbook-d364e.firebaseio.com",
+        storageBucket: "cookbook-d364e.appspot.com",
+        messagingSenderId: "24604178353",
+    };
+    firebase.initializeApp(config);
+
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    function uploadimage() {
+        var storage = firebase.storage();
+        var file = document.getElementById("files").files[0];
+        console.log('test1');
+        var storageRef = storage.ref();
+        var thisref = storageRef.child(file.name).put(file);
+        thisref.on('state_changed', function (snapshot) {
+                console.log("file uploaded succesfully");
+            },
+            function (error) {
+                alert("error")
+            },
+            function () {
+                // Upload completed successfully, now we can get the download URL
+                var downloadURL = thisref.snapshot.downloadURL;
+                console.log("got url");
+                document.getElementById("url").value = downloadURL;
+                document.getElementById("form").submit();
+            });
+    }
+</script>
