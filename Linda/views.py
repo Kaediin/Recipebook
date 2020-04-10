@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import pyrebase
 import firebase_admin
+from firebase_admin.db import Query
+
 from Linda.models import Recipe
 from firebase_admin import firestore
 from firebase_admin import auth
@@ -8,6 +10,7 @@ from firebase_admin import storage
 from firebase_admin import credentials
 from datetime import datetime
 from Recipebook import urls
+from django.http import HttpResponseRedirect
 
 if (not len(firebase_admin._apps)):
     cred = credentials.Certificate('Linda/Cookbook-6b61f3e4b995.json')
@@ -105,7 +108,7 @@ def addNewRecipe(request):
     recipes = getAllRecipes()
 
     db.collection('recipes').document(recipe.cDate).set(data)
-    return render(request, 'allRecipes.html', {'recipes': recipes})
+    return render(request, 'thankyou.html', {'recipes': recipes})
 
 
 def gotohomepage(request):
@@ -115,6 +118,7 @@ def gotohomepage(request):
 def getAllRecipes():
     global db
     docs = db.collection('recipes').stream()
+    # docs.orderBy("date", "asc")
     recipes = []
 
     for doc in docs:
@@ -131,4 +135,5 @@ def getAllRecipes():
         )
         recipes.append(recipe)
 
+    recipes.reverse()
     return recipes

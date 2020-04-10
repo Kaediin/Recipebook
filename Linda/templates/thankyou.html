@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+{% include "header.html" %}
+<div id="container">
+    <h1>Your form has been added successfully!</h1>
+    <h1 id="timecounter"></h1>
+</div>
+</body>
+</html>
+<script>
+    var time = 3;
+    setInterval(function () {
+        if (time > 0) {
+            document.getElementById("timecounter").innerHTML = "You will be redirected in "
+                + time + " seconds. If not then click navigate through the navigation bar";
+            time--;
+        } else {
+            location.href = "/Recipe/View" //this will redirect to your index
+        }
+
+    }, 1000)
+</script>
