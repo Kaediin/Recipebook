@@ -83,6 +83,7 @@ def viewRecipe(request, uuid):
 def addNewRecipe(request):
     global db
     global bucket
+    date = datetime.now().strftime("%d %B %Y - %H:%M")
     recipe = Recipe(
         request.POST.get('title_new_recipe'),
         request.POST.get('description_new_recipe'),
@@ -91,7 +92,7 @@ def addNewRecipe(request):
         request.POST.get('est_time_new_recipe'),
         request.POST.get('url'),
         urls.email,
-        datetime.now().strftime("%d %B %Y - %H:%M")
+        date
     )
 
     data = {
@@ -118,7 +119,6 @@ def gotohomepage(request):
 def getAllRecipes():
     global db
     docs = db.collection('recipes').stream()
-    # docs.orderBy("date", "asc")
     recipes = []
 
     for doc in docs:

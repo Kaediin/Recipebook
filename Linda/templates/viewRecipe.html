@@ -6,6 +6,67 @@
 </head>
 {% include "header.html" %}
 <body>
-<p>{{ recipe.title }}</p>
+<div id="container">
+    <div id="text">
+        <div id="img">
+            <img src="{{ recipe.img }}" style="max-width: 100%" alt="img">
+        </div>
+        <div id="title">
+            <h1>{{ recipe.title }}</h1>
+        </div>
+
+        <div id="description">
+            <h3>Description</h3>
+            <pre>{{ recipe.description }}</pre>
+        </div>
+        <div id="ingredients">
+            <h3>Ingredients</h3>
+            <pre>{{ recipe.ingredients }}</pre>
+        </div>
+        <div id="method">
+            <h3>Method</h3>
+            <pre>{{ recipe.cookingMethod }}</pre>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
+<style>
+    div#container {
+        width: 800px;
+        margin: auto;
+        display: flex;
+    }
+
+    h1 {
+        margin-top: 0;
+    }
+
+    pre, h1, h3 {
+        color: black;
+    }
+
+    pre {
+        white-space: pre-wrap; /* css-3 */
+        white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
+    }
+
+    h3 {
+        width: auto;
+        border-bottom: black solid 1px;
+    }
+
+    div#img{
+        position: relative;
+        float: right;
+        clear: right;
+        width: auto;
+        margin-left: 20px;
+    }
+
+
+</style>

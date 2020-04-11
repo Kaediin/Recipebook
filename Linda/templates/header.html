@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    <nav>
-        <ul>
-            <a class="header_items" href="../Home">Home</a>
-        </ul>
-        <ul>
-            <a class="header_items" href="../Recipe/View">View all recipes</a>
-        </ul>
-        <ul>
-            <a class="header_items" href="../Recipe/Create">Add new recipe</a>
-        </ul>
-    </nav>
-</header>
-
-</html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-    * {
-        font-family: Roboto, sans-serif;
+    html {
+        background: cornflowerblue;
     }
 
     body {
-        width: 1200px;
-        margin: auto;
+        font-family: Roboto, sans-serif;
     }
 
-    nav {
-        background: darkblue;
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #26428b;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
     }
 
-    ul {
-        display: inline-block;
-    }
-
-    .header_items{
-        text-decoration: underline;
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
         color: white;
+        display: block;
+        transition: 0.3s;
+    }
+
+    input[type=submit] {
+        -webkit-appearance: none;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
     }
 </style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="header_items" href="{% url 'home' %} ">Home</a>
+    <a class="header_items" href="{% url 'viewAllRecipies' %}">View all recipes</a>
+    <a class="header_items" href="{% url 'createNewRecipe' %}">Add new recipe</a>
+    <a class="logout" href="" style="color: darkred">Log out</a>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+</body>
+</html>

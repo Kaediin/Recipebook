@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Linda/templates/thankyou.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipebook/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recipebook/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +60,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="Recipebook.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -91,7 +95,11 @@
       <workItem from="1585589663802" duration="11203000" />
       <workItem from="1585660874444" duration="15999000" />
       <workItem from="1586536960383" duration="30000" />
-      <workItem from="1586537083556" duration="4823000" />
+      <workItem from="1586537083556" duration="4896000" />
+      <workItem from="1586542972403" duration="253000" />
+      <workItem from="1586616181793" duration="793000" />
+      <workItem from="1586627558807" duration="5594000" />
+      <workItem from="1586636784859" duration="5181000" />
     </task>
     <servers />
   </component>
@@ -99,10 +107,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585660896497">
+    <state x="448" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586637479429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585660896497" />
+    <state x="448" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586637479429" />
     <state x="1245" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1585583744239">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -115,33 +123,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1276" y="426" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585595647253" />
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1586537244506">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1586637485848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586537244506" />
-    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1586537244506">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
+    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1586637485848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586537244506" />
-    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1586537244505">
+    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
+    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1586637485848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586537244505" />
-    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1586537244506">
+    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1586637485848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586537244506" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
     <state x="792" y="168" key="SettingsEditor" timestamp="1585595650291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585595650291" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586537085603">
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586636785372">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586537085603" />
-    <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586541444580">
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586636785372" />
+    <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586638535394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586541444580" />
+    <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586638535394" />
   </component>
 </project>

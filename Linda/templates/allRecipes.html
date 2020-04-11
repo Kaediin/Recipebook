@@ -12,7 +12,7 @@
         {% with uuid=recipe.cDate %}
             <div class="perItem">
                 <div id="gridThumbnail">
-                    <img id="thumbnail" src="{{ recipe.img }}" alt="picture" style="width:250px;">
+                    <img id="thumbnail" src="{{ recipe.img }}" alt="picture" style="max-width: 450px">
                 </div>
                 <div id="text-container">
                     <div id="gridBody">
@@ -54,6 +54,7 @@
 
     div#container {
         width: 1200px;
+        margin: auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -62,10 +63,11 @@
     .perItem {
         display: grid;
         grid: "gridThumbnail" auto "gridBody" auto "gridButton" auto/
-        300px;
+        auto;
         border: 1px black solid;
         margin: 50px 0 0 0;
-        width: 300px;
+        width: auto;
+        background: white;
     }
 
     img#thumbnail {
@@ -94,7 +96,7 @@
         1fr 1fr
     }
 
-    input[type=submit]{
+    input[type=submit] {
 
     }
 
@@ -107,8 +109,9 @@
     div#gridThumbnail {
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: darkgrey;
+        justify-content: flex-start;
+        background: white;
+        height: 400px;
     }
 
     .view-recipe {
@@ -126,7 +129,7 @@
         justify-content: flex-end;
     }
 
-    p#time{
+    p#time {
         display: inline-block;
         margin: 0;
         color: darkgrey;
@@ -160,5 +163,15 @@
         background: darkorange;
         color: white;
         transition: 0.8s;
+    }
+
+    @media screen and (max-width: 500px) {
+        div#container {
+            width: auto;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
     }
 </style>

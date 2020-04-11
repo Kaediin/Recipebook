@@ -6,14 +6,14 @@
 </head>
 {% include "header.html" %}
 <body>
-<form method="post" action="../Recipe/Add" id="form">
+<form method="post" action="{% url 'addRecipe' %}" id="form">
     {% csrf_token %}
-    <input type="text" name="title_new_recipe">
-    <input type="text" name="description_new_recipe">
-    <input type="text" name="ingredients_new_recipe">
-    <input type="text" name="method_new_recipe">
-    <input type="number" name="est_time_new_recipe">
-    <input type="file" name="imgs_new_recipe" id="files">
+    <input type="text" name="title_new_recipe"><br>
+    <textarea name="description_new_recipe" placeholder="Description"></textarea><br>
+    <textarea name="ingredients_new_recipe" placeholder="Ingredient"></textarea><br>
+    <textarea name="method_new_recipe" placeholder="Method"></textarea><br>
+    <textarea name="est_time_new_recipe"></textarea><br>
+    <input type="file" name="imgs_new_recipe" id="files"><br>
     <input type="hidden" name="url" id="url">
     <input type="button" value="Add recipe" onclick="uploadimage()">
 </form>
@@ -34,9 +34,9 @@
     function uploadimage() {
         var storage = firebase.storage();
         var file = document.getElementById("files").files[0];
-        console.log('test1');
+
         var storageRef = storage.ref();
-        var thisref = storageRef.child(file.name).put(file);
+        var thisref = storageRef.child(makeid(15)).put(file);
         thisref.on('state_changed', function (snapshot) {
                 console.log("file uploaded succesfully");
             },
@@ -51,4 +51,15 @@
                 document.getElementById("form").submit();
             });
     }
+
+    function makeid(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
 </script>
