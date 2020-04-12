@@ -27,9 +27,7 @@ config = {
     'measurementId': "G-X0S4HHWN15"
 }
 
-tags = [
-    
-]
+tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad']
 
 db = firestore.client()
 bucket = storage.bucket("cookbook-d364e.appspot.com")
@@ -56,47 +54,89 @@ def homepage(request):
 
 
 def createNewRecipe(request):
-    return render(request, 'createRecipe.html')
+    global tags
+    return render(request, 'createRecipe.html', {'tags': tags})
 
 
 def allViews(request):
     recipes = getAllRecipes()
 
-    return render(request, 'allRecipes.html', {'recipes': recipes})
+    return render(request, 'allRecipes.html', {
+        'recipes': recipes,
+        'tags': tags
+    })
+
+def filterAllRecipes(request):
+    recipes = getAllRecipes()
+    selected_tags = request.POST.getlist('filter_tags')
+    filtered_recipes = []
+    for recipe in recipes:
+        for tag in selected_tags:
+            if tag in recipe.tags:
+                if recipe not in filtered_recipes:
+                    filtered_recipes.append(recipe)
+
+
+    return render(request, 'allRecipes.html', {
+        'recipes': filtered_recipes,
+        'tags': tags,
+        'filteredTags': selected_tags
+    })
+
 
 
 def viewRecipe(request, uuid):
     recipe = getRecipeFromUUID(uuid)
     return render(request, 'viewRecipe.html', {'recipe': recipe})
 
+
 def deleteRecipe(request, uuid):
     recipes = getAllRecipes()
     recipe = getRecipeFromUUID(uuid)
-    db.collection('recipes').document(recipe.title).delete()
+    try:
+        db.collection('recipes').document(recipe.title).delete()
+    except:
+        print('exception')
+
     return render(request, 'thankyou.html', {'recipes': recipes})
+
 
 def modifyRecipe(request, uuid):
     recipe = getRecipeFromUUID(uuid)
-    return render(request, 'modifyRecipe.html', {'recipe': recipe})
+    return render(request, 'modifyRecipe.html', {
+        'recipe': recipe,
+        'tags': tags
+    })
+
 
 def saveModification(request, uuid):
     global db
     date = datetime.now().strftime("%d %B %Y - %H:%M")
+    modTags = request.POST.getlist('select_tags_modified')
+    hiddenIMGurl = request.POST.get('url_modify')
+    hiddenName = request.POST.get('urlname_modify')
+
     recipe = Recipe(
         uuid,
         request.POST.get('ingredients_modified_recipe'),
         request.POST.get('method_modified_recipe'),
-        "",
-        "",
-        "",
+        modTags,
+        request.POST.get('est_time_modified_recipe'),
+        hiddenIMGurl,
+        hiddenName,
         urls.email,
+        "",
         date
     )
 
     updates = {
         'ingredients': recipe.ingredients,
         'method': recipe.cookingMethod,
-        'author': recipe.author,
+        'est_time': recipe.estTime,
+        'tags': recipe.tags,
+        'img_url': recipe.img,
+        'img_name': recipe.imgname,
+        'modification_date': recipe.mDate
     }
 
     recipes = getAllRecipes()
@@ -104,30 +144,40 @@ def saveModification(request, uuid):
     db.collection('recipes').document(recipe.title).update(updates)
     return render(request, 'thankyou.html', {'recipes': recipes})
 
+
 def addNewRecipe(request):
     global db
     global bucket
     date = datetime.now().strftime("%d %B %Y - %H:%M")
+    tags = request.POST.getlist('select_tags')
+
+    while len(tags) < 2:
+        tags.append('')
+
     recipe = Recipe(
         request.POST.get('title_new_recipe'),
         request.POST.get('ingredients_new_recipe'),
         request.POST.get('method_new_recipe'),
+        tags,
         request.POST.get('est_time_new_recipe'),
         request.POST.get('url'),
         request.POST.get('urlname'),
         urls.email,
-        date
+        date,
+        ""
     )
 
     data = {
         'title': recipe.title,
         'ingredients': recipe.ingredients,
         'method': recipe.cookingMethod,
-        'est time': recipe.estTime,
+        'tags': recipe.tags,
+        'est_time': recipe.estTime,
         'author': recipe.author,
         'creation date': recipe.cDate,
-        'img url': recipe.img,
-        'img name': recipe.imgname
+        'img_url': recipe.img,
+        'img_name': recipe.imgname,
+        'modification_date': recipe.mDate
     }
 
     recipes = getAllRecipes()
@@ -159,13 +209,24 @@ def getAllRecipes():
             dict.get("title", "No value found"),
             dict.get("ingredients", "No value found"),
             dict.get("method", "No value found"),
-            dict.get("est time", "No value found"),
-            dict.get("img url", "No value found"),
-            dict.get("img name", "No value found"),
+            dict.get("tags", "No value found"),
+            dict.get("est_time", "No value found"),
+            dict.get("img_url", "No value found"),
+            dict.get("img_name", "No value found"),
             dict.get("author", "No value found"),
-            dict.get("creation date", "No value found")
+            dict.get("creation_date", "No value found"),
+            dict.get("modification_date", "No value found")
         )
         recipes.append(recipe)
 
     recipes.reverse()
     return recipes
+
+
+from django import template
+
+register = template.Library()
+
+@register.filter
+def get_type(value):
+    return type(value)

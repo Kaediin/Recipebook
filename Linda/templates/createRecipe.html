@@ -11,25 +11,39 @@
         {% csrf_token %}
         <input type="text" name="title_new_recipe" placeholder="Title" required><br>
         <div id="containerIngredients">
+            <h2 style="margin: 0">Ingredients</h2>
             <textarea rows="6" name="ingredients_new_recipe" placeholder="Ingredients" required></textarea><br>
         </div>
 
         <div id="containerMethod">
+            <h2 style="margin: 0">Method</h2>
             <textarea rows="6" name="method_new_recipe" placeholder="Method" required></textarea><br>
         </div>
 
-        <div id="containerButtom">
+        <div id="containerGrid">
 
-            <div id="containerNumber">
-                <input type="number" name="est_time_new_recipe" placeholder="Time to make in minutes" required><br>
-
+            <div id="containerTags">
+                <select multiple name="select_tags">
+                    {% for tag in tags %}
+                        <option name="{{ tag }}">{{ tag }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
-            <div id="containerFile">
-                <input id="file_button" type="button" onclick="onClickFile()" value="Upload file">
-                <input style="display: none" type="file" onchange="onChangeFile()" name="imgs_new_recipe" id="files">
+            <div id="containerButtons">
+
+                <div id="containerNumber">
+                    <input type="number" name="est_time_new_recipe" placeholder="Time to make in minutes" required><br>
+                </div>
+
+                <div id="containerFile">
+                    <input id="file_button" type="button" onclick="onClickFile()" value="Upload file (optional)">
+                    <input style="display: none" type="file" onchange="onChangeFile()" name="imgs_new_recipe"
+                           id="files">
+                </div>
             </div>
         </div>
+
 
         <input type="hidden" name="url" id="url">
         <input type="hidden" name="urlname" id="urlname">
@@ -44,21 +58,62 @@
 {#    bkLib.onDomLoaded(nicEditors.allTextAreas);#}
 {#</script>#}
 <style>
-    div#container {
-        display: flex;
-        justify-content: center;
-    }
 
-    form {
-        width: 612px;
+    div#container {
+        width: 600px;
+        margin: auto;
     }
 
     textarea {
         resize: vertical;
-        width: 610px;
+        padding: 5px;
+        width: 100%;
+        border: 1px black solid;
     }
 
-    div#containerDescription, div#containerIngredients, div#containerMethod {
+    input[type=number] {
+        border: 1px black solid;
+    }
+
+    option {
+        padding: 5px;
+    }
+
+    div#containerButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    div#containerGrid {
+        display: grid;
+        width: 100%;
+        grid-gap: 20px;
+        grid: "containerTags containerButtons" 1fr/
+        1fr 2fr;
+        margin-top: 20px;
+    }
+
+    select {
+        width: 100%;
+        height: 100%;
+        border: 1px black solid;
+    }
+
+    input[type=number], input#file_button {
+        width: 100%;
+        height: 100%;
+        padding: 4px;
+    }
+
+
+    div#containerFile, div#containerNumber {
+        width: 100%;
+        height: 40%;
+    }
+
+    div#containerIngredients, div#containerMethod {
         margin-top: 20px;
     }
 
@@ -66,20 +121,10 @@
         background-color: white;
     }
 
-    div#containerButtom {
-        display: flex;
-        justify-content: space-between;
-    }
 
-    div#containerNumber, div#containerFile {
-        display: flex;
-        width: 49%;
-
-    }
-
-    input[type=text], input[type=number] {
+    input[type=text] {
         border: 1px black solid;
-        width: 600px;
+        width: 100%;
         padding: 5px;
     }
 
@@ -98,13 +143,6 @@
         color: white;
         height: 40px;
         border: 1px solid black;
-    }
-
-    input#createRecipe:hover {
-        background-color: white;
-        transition: 0.8s;
-        color: black;
-
     }
 
 </style>
@@ -134,32 +172,43 @@
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
     function uploadimage() {
-        var file = document.getElementById("files").files[0];
-        if (file != null) {
-            var storage = firebase.storage();
-            var storageRef = storage.ref();
-            var urlname = makeid(15);
-            var thisref = storageRef.child(urlname).put(file);
-            thisref.on('state_changed', function (snapshot) {
-                    console.log("file uploaded succesfully");
-                },
-                function (error) {
-                    alert("error")
-                },
-                function () {
-                    // Upload completed successfully, now we can get the download URL
-                    var downloadURL = thisref.snapshot.downloadURL;
-                    console.log(urlname);
-                    console.log("got url");
-                    document.getElementById("url").value = downloadURL;
-                    document.getElementById("urlname").value = urlname;
-                    document.getElementById("form").submit();
-                });
-        } else {
-            document.getElementById("url").value = "";
-            document.getElementById("urlname").value = "";
-            document.getElementById("form").submit();
+        let allFieldFilledIn = true;
+        document.getElementById("form").querySelectorAll("[required]").forEach(function (i) {
+            if (!allFieldFilledIn) return;
+            if (!i.value) allFieldFilledIn = false;
+        });
+
+        if (!allFieldFilledIn) {
+            alert('Please fill all the fields (');
+        } else if (allFieldFilledIn) {
+            var file = document.getElementById("files").files[0];
+            if (file != null) {
+                var storage = firebase.storage();
+                var storageRef = storage.ref();
+                var urlname = makeid(15);
+                var thisref = storageRef.child(urlname).put(file);
+                thisref.on('state_changed', function (snapshot) {
+                        console.log("file uploaded succesfully");
+                    },
+                    function (error) {
+                        alert("error")
+                    },
+                    function () {
+                        // Upload completed successfully, now we can get the download URL
+                        var downloadURL = thisref.snapshot.downloadURL;
+                        console.log(urlname);
+                        console.log("got url");
+                        document.getElementById("url").value = downloadURL;
+                        document.getElementById("urlname").value = urlname;
+                        document.getElementById("form").submit();
+                    });
+            } else {
+                document.getElementById("url").value = "";
+                document.getElementById("urlname").value = "";
+                document.getElementById("form").submit();
+            }
         }
+
     }
 
     function makeid(length) {
