@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/urls.py" afterDir="false" />
@@ -99,7 +100,8 @@
       <workItem from="1586542972403" duration="253000" />
       <workItem from="1586616181793" duration="793000" />
       <workItem from="1586627558807" duration="5594000" />
-      <workItem from="1586636784859" duration="5181000" />
+      <workItem from="1586636784859" duration="5314000" />
+      <workItem from="1586679370268" duration="17276000" />
     </task>
     <servers />
   </component>
@@ -123,30 +125,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1276" y="426" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585595647253" />
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1586637485848">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1586642101673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
-    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1586637485848">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586642101673" />
+    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1586642101673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
-    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1586637485848">
+    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586642101673" />
+    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1586642101673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
-    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1586637485848">
+    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586642101673" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1586642101673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586637485848" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586642101673" />
     <state x="792" y="168" key="SettingsEditor" timestamp="1585595650291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585595650291" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586636785372">
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586679381655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586636785372" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586679381655" />
     <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586638535394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

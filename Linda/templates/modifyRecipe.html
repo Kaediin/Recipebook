@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new recipe</title>
+</head>
+{% include "header.html" %}
+<body>
+<div id="container">
+    <form method="post" action="{% url 'saveModification' recipe.title %}" id="form">
+        {% csrf_token %}
+        <input type="text" name="title_new_recipe" placeholder="Title" disabled value="{{ recipe.title }}"><br>
+        <div id="containerIngredients">
+            <textarea rows="6" name="ingredients_modified_recipe" placeholder="Ingredients">{{ recipe.ingredients }}</textarea><br>
+        </div>
+
+        <div id="containerMethod">
+            <textarea rows="6" name="method_modified_recipe" placeholder="Method">{{ recipe.cookingMethod }}</textarea><br>
+        </div>
+
+        <div id="containerButtom">
+
+            <div id="containerNumber">
+                <input type="number" name="est_time_modified_recipe" placeholder="Time to make in minutes" value="{{ recipe.estTime }}"><br>
+            </div>
+
+            <div id="containerFile">
+                <input id="file_button" type="button" onclick="onClickFile()" value="Upload file">
+                <input style="display: none" type="file" onchange="onChangeFile()" name="imgs_modify_recipe" id="files">
+            </div>
+        </div>
+
+        <input type="hidden" name="url_modify" id="url">
+        <input type="hidden" name="urlname_modify" id="urlname">
+        <input id="createRecipe" type="submit" value="Save Modifications" onclick="uploadimage()">
+    </form>
+</div>
+
+</body>
+</html>
+{#<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>#}
+{#<script type="text/javascript">#}
+{#    bkLib.onDomLoaded(nicEditors.allTextAreas);#}
+{#</script>#}
+<style>
+    div#container {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        width: 612px;
+    }
+
+    textarea {
+        resize: vertical;
+        width: 610px;
+    }
+
+    div#containerDescription, div#containerIngredients, div#containerMethod {
+        margin-top: 20px;
+    }
+
+    div#containerDescription div, div#containerIngredients div, div#containerMethod div {
+        background-color: white;
+    }
+
+    div#containerButtom {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    div#containerNumber, div#containerFile {
+        display: flex;
+        width: 49%;
+
+    }
+
+    input[type=text], input[type=number] {
+        border: 1px black solid;
+        width: 600px;
+        padding: 5px;
+    }
+
+    input#file_button {
+        width: 100%;
+        background-color: orangered;
+        border: 1px solid black;
+        color: white;
+    }
+
+    input#createRecipe {
+        width: 100%;
+        margin-top: 20px;
+        background-color: darkgreen;
+        cursor: pointer;
+        color: white;
+        height: 40px;
+        border: 1px solid black;
+    }
+
+    input#createRecipe:hover {
+        background-color: white;
+        transition: 0.8s;
+        color: black;
+
+    }
+
+</style>
+
+{#<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>#}
+{#<script>#}
+{##}
+{#    function onChangeFile() {#}
+{#        var files = document.getElementById('files').files[0];#}
+{#        document.getElementById('file_button').value = files.name + "";#}
+{#        document.getElementById('file_button').style.backgroundColor = "green";#}
+{#    }#}
+{##}
+{##}
+{#    function onClickFile() {#}
+{#        document.getElementById('files').click()#}
+{#    }#}
+{##}
+{#    var config = {#}
+{#        apiKey: "AIzaSyBvdVFeFAfNvk3syObxsVSu4qYQPR3eAE0",#}
+{#        authDomain: "cookbook-d364e.firebaseapp.com",#}
+{#        databaseURL: "https://cookbook-d364e.firebaseio.com",#}
+{#        storageBucket: "cookbook-d364e.appspot.com",#}
+{#        messagingSenderId: "24604178353",#}
+{#    };#}
+{#    firebase.initializeApp(config);#}
+{##}
+{#    // Get a reference to the storage service, which is used to create references in your storage bucket#}
+{#    function uploadimage() {#}
+{#        var file = document.getElementById("files").files[0];#}
+{#        if (file != null) {#}
+{#            var storage = firebase.storage();#}
+{#            var storageRef = storage.ref();#}
+{#            var urlname = makeid(15);#}
+{#            var thisref = storageRef.child(urlname).put(file);#}
+{#            thisref.on('state_changed', function (snapshot) {#}
+{#                    console.log("file uploaded succesfully");#}
+{#                },#}
+{#                function (error) {#}
+{#                    alert("error")#}
+{#                },#}
+{#                function () {#}
+{#                    // Upload completed successfully, now we can get the download URL#}
+{#                    var downloadURL = thisref.snapshot.downloadURL;#}
+{#                    console.log(urlname);#}
+{#                    console.log("got url");#}
+{#                    document.getElementById("url").value = downloadURL;#}
+{#                    document.getElementById("urlname").value = urlname;#}
+{#                    document.getElementById("form").submit();#}
+{#                });#}
+{#        } else {#}
+{#            document.getElementById("url").value = "";#}
+{#            document.getElementById("urlname").value = "";#}
+{#            document.getElementById("form").submit();#}
+{#        }#}
+{#    }#}
+{##}
+{#    function makeid(length) {#}
+{#        var result = '';#}
+{#        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';#}
+{#        var charactersLength = characters.length;#}
+{#        for (var i = 0; i < length; i++) {#}
+{#            result += characters.charAt(Math.floor(Math.random() * charactersLength));#}
+{#        }#}
+{#        return result;#}
+{#    }#}
+{##}
+{#</script>#}

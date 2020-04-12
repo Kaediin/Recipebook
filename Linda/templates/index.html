@@ -16,7 +16,7 @@
                 alert("Invalid credentials")
             </script>
         {% endif %}
-        <form action="/Sign-in" method="post">
+        <form action="{% url 'signin' %}" method="post">
             {% csrf_token %}
             <input type="email" id="login" class="fadeIn second" name="email_signin" placeholder="login">
             <input type="password" id="password" class="fadeIn third" name="password_signin" placeholder="password">

@@ -9,10 +9,11 @@
 <body>
 <div id="container">
     {% for recipe in recipes %}
-        {% with uuid=recipe.cDate %}
+        {% with uuid=recipe.title %}
             <div class="perItem">
                 <div id="gridThumbnail">
-                    <img id="thumbnail" src="{{ recipe.img }}" alt="picture" style="max-width: 450px">
+                    <img id="thumbnail" src="{{ recipe.img }}" alt=" No picture found :("
+                         style="max-width: 450px; max-height: 350px">
                 </div>
                 <div id="text-container">
                     <div id="gridBody">
@@ -22,7 +23,7 @@
                                  style="height:20px; width:20px;" alt="">
                         </div>
                         <h3 id="title">{{ recipe.title }}</h3>
-                        <p id="author">{{ recipe.author }}</p>
+                        {#                        <p id="author">{{ recipe.author }}</p>#}
                     </div>
                     <div id="gridButton">
                         <form method="post" action="{% url 'viewRecipe' uuid %}" id="view_recipe_form">
@@ -31,12 +32,13 @@
                             <input type="hidden" value="{{ uuid }}" id="hidden" name="id_value">
                         </form>
                         <div id="gridUnderButtons">
-                            <form method="post" action="" id="form_delete">
+                            <form method="post" action="{% url 'deleteRecipe' uuid %}" id="form_delete">
                                 {% csrf_token %}
-                                <input class="button_delete" type="submit" value="Delete"
-                                       onclick="if (confirm('Are you sure you want to delete this? There is no going back after you delete this item...')) commentDelete(1); return false">
+                                <input class="button_delete" type="button" value="Delete"
+                                       onclick="removeIMG('{{ recipe.imgname }}')">
+                                <input type="hidden" value="{{ recipe }}" id="hidden_recipe" name="recipe_value">
                             </form>
-                            <form method="post" action="" id="form_modify">
+                            <form method="post" action="{% url 'modifyRecipe' uuid %}" id="form_modify">
                                 {% csrf_token %}
                                 <input class="button_modify" type="submit" value="Modify">
                             </form>
@@ -50,6 +52,34 @@
 </div>
 </body>
 </html>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyBvdVFeFAfNvk3syObxsVSu4qYQPR3eAE0",
+        authDomain: "cookbook-d364e.firebaseapp.com",
+        databaseURL: "https://cookbook-d364e.firebaseio.com",
+        storageBucket: "cookbook-d364e.appspot.com",
+        messagingSenderId: "24604178353",
+    };
+    firebase.initializeApp(config);
+
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    function removeIMG(imgname) {
+        if (imgname !== "") {
+            var storage = firebase.storage();
+            var storageRef = storage.ref();
+            var thisref = storageRef.child(imgname);
+            thisref.delete().then(function () {
+                console.log("deleted successfully");
+                document.getElementById("#form_delete").submit();
+            }).catch(function (error) {
+                document.getElementById("form_delete").submit();
+                console.log(error + "");
+            });
+        }
+        document.getElementById("#form_delete").submit();
+    }
+</script>
 <style>
 
     div#container {
@@ -82,6 +112,7 @@
     h3 {
         padding: 0;
         margin: 0;
+        width: 200px;
     }
 
     p#author {
@@ -163,6 +194,10 @@
         background: darkorange;
         color: white;
         transition: 0.8s;
+    }
+
+    div#gridButton {
+        margin-top: 10px;
     }
 
     @media screen and (max-width: 500px) {
