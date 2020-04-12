@@ -103,18 +103,27 @@
                     var downloadURL = thisref.snapshot.downloadURL;
                     console.log(urlname);
                     console.log("got url");
-                    var ref = storageRef.child({{recipe.imgname}});
-                    ref.delete().then(function () {
-                        console.log("deleted successfully");
-                    }).catch(function (error) {
-                        console.log(error + "");
-                    });
+                    removeIMG('{{ recipe.imgname }}');
                     document.getElementById("url").value = downloadURL;
                     document.getElementById("urlname").value = urlname;
                     document.getElementById("form").submit();
+
                 });
         } else {
             document.getElementById("form").submit();
+        }
+
+        function removeIMG(imgname) {
+            if (imgname !== "") {
+                var storage = firebase.storage();
+                var storageRef = storage.ref();
+                var thisref = storageRef.child(imgname);
+                thisref.delete().then(function () {
+                    console.log("deleted successfully");
+                }).catch(function (error) {
+                    console.log(error + "");
+                });
+            }
         }
     }
 
