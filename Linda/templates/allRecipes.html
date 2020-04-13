@@ -7,23 +7,35 @@
 </head>
 {% include "header.html" %}
 <body>
-<div id="title">
-    <h2>All Recipes</h2>
+<div id="head">
+    <div id="title">
+        <h2>All Recipes</h2>
 
-    <form id="form_filter" method="post" action="{% url 'filterAllRecipes' %}">
-        {% csrf_token %}
-        <select multiple name="filter_tags">
-            {% for tag in tags %}
-                <option name="{{ tag }}">{{ tag }}</option>
-            {% endfor %}
-        </select><br>
-        <input type="submit" value="Filter" id="filter">
-    </form>
+        <form id="form_filter" method="post" action="{% url 'filterAllRecipes' %}">
+            {% csrf_token %}
+            <select multiple name="filter_tags">
+                {% for tag in tags %}
+                    <option name="{{ tag }}">{{ tag }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="Filter" id="filter">
+        </form>
 
-    <form id="form_remove_filters" method="post" action="{% url 'viewAllRecipies' %}">
-        {% csrf_token %}
-        <input type="submit" value="Remove Filters" id="removeFilters">
-    </form>
+        <form id="form_remove_filters" method="post" action="{% url 'viewAllRecipies' %}">
+            {% csrf_token %}
+            <input type="submit" value="Remove Filters" id="removeFilters">
+        </form>
+    </div>
+    <div id="selectedTagsContainer">
+        {% if filteredTags|length > 0 %}
+            <h4>Tags selected:</h4>
+            <ul>
+                {% for tag in filteredTags %}
+                    <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </div>
 <div id="container">
 
@@ -63,11 +75,10 @@
                                 <input class="button_modify" type="submit" value="Modify">
                             </form>
                         </div>
-
                     </div>
                     <div id="tagsContainer">
                         {% for tag in recipe.tags %}
-                                <p class="tag">{{ tag }}</p>
+                            <p class="tag">{{ tag }}</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -107,6 +118,21 @@
     }
 </script>
 <style>
+
+    div#head{
+        display: flex;
+        justify-content: center;
+    }
+
+    div#selectedTagsContainer{
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+    }
+
+    div#selectedTagsContainer h4{
+        margin: 5px 0 10px 0;
+    }
 
     select {
         width: 300px;
@@ -189,7 +215,7 @@
     h3 {
         padding: 0;
         margin: 0;
-        width: 200px;
+        max-width: 300px;
     }
 
     p#author {
@@ -214,7 +240,7 @@
         padding: 5px 0 5px 0;
     }
 
-    div#gridThumbnail{
+    div#gridThumbnail {
         display: flex;
         align-items: center;
         justify-content: center;

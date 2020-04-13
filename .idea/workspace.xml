@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,8 @@
       <workItem from="1586627558807" duration="5594000" />
       <workItem from="1586636784859" duration="5314000" />
       <workItem from="1586679370268" duration="31265000" />
-      <workItem from="1586722205483" duration="2479000" />
+      <workItem from="1586722205483" duration="2734000" />
+      <workItem from="1586770665241" duration="2080000" />
     </task>
     <servers />
   </component>
@@ -138,10 +139,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585595650291" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586722212216">
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586770665337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586722212216" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586770665337" />
     <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586719819310">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
