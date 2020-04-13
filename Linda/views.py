@@ -151,8 +151,8 @@ def addNewRecipe(request):
     date = datetime.now().strftime("%d %B %Y - %H:%M")
     tags = request.POST.getlist('select_tags')
 
-    while len(tags) < 2:
-        tags.append('')
+    # while len(tags) < 2:
+    #     tags.append('')
 
     recipe = Recipe(
         request.POST.get('title_new_recipe'),
