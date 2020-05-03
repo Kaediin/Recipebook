@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Recipebook.settings')
+os.environ.setdefault('DJyANGO_SETTINGS_MODULE', 'Recipebook.settings')
 
 application = get_wsgi_application()

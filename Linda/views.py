@@ -2,18 +2,32 @@ from datetime import datetime
 
 import firebase_admin
 import pyrebase
-from django.http import HttpResponse
 from django.shortcuts import render
+from Linda import utils
+from Recipebook import settings
 from firebase_admin import auth
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import storage
 
 from Linda.models import Recipe
-from Recipebook import urls
 
-if (not len(firebase_admin._apps)):
-    cred = credentials.Certificate('Linda/Cookbook-6b61f3e4b995.json')
+cert = {
+  "type": "service_account",
+  "project_id": "cookbook-d364e",
+  "private_key_id": "6b61f3e4b99591de73d32ad07a09f7919d25d7f2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDFhwRGQUXwZ50a\nqwfsLXAhCNYHITr6/VQInwU4r0gmhcoWDxB3+9NqVeKkQWvUwCf46Pu55W9IotMv\nUGBZTjzesfOzmzU7OElVE0wLlxQW/Z48Q+R4TXdwg8EXL0HhEG2fWLCGy/4Op+dt\nJuadtQv3WGuAmu9fYk7OL/40J8vuh+A0KzonhJHxjS2MuEiFUSwSJjLuUzjM5Kjj\nQhf4q8LHyXMkphj0BlYIdTuesqhkg1nCWBxUcJ9Sww5O5vp2ALXib1zVAoUXdCrD\ngHrkts5xvU2Fy6p+wsak1F1Dd/NJhxyVGPeHxpNsEs4rO3ZvfWMWTp8FXfyoajSk\nRyOSHkMbAgMBAAECggEACvSQQUtD00UT5WjrUWc7Fayf85jyuf1Mk1vVK3iBR8ME\n2yYDvlEvv8aQAZcv9rFKUO0Eb8zbWAvRKwnKBjn8zfHQYpDu/2ABpTUi8xjygCHv\nNvLMXFBuREXHyFQ9KFFDxeI34YoKhwqQnzEDT7znsyoVcEu85K1Bp1WUbj/EzkUP\nBKl18TlXqollvN+UNU+lzCaAuV8fTtTk2YiNNKPnkBsQA0gpUorOuwpU6S9aSPTS\n0FZhrjC5+LtFhM2+p97NV+3ghZ+RAJQZHWU1BWxrUaC/ye5SRVT7R+CsxwhlusBq\nG0SkmsHZRilMouQKlIutw+q+AnxKX39z0wNQfILUUQKBgQDnMhuLyaIJ8pwSQiZW\nHcr4ypzh71FPzcvVTuwgmQX1+rEk2ib4UQxM57HUbpE5oIq+Js9qwY3+J0h5TjxF\nSx9RIGLgcifcc20O63UQaFOhPRG+sMuFBR0cnsjNZ46nlCnuTY4waZuN7iFV15Uk\n0jkjDDzyWYL7g8IXUtFvCp3DMQKBgQDauDGb77Z/OWHYWjHmCj0TMIIbL1tCzyrI\n9h9g1Bhl8Bz1I1ZRYhEPBQJ26ocNkwbQy0iB7E1gtMmrK8BPGFlC8n0kO1A7cOyL\nDYNjEeDmX6mjg5B9TUg7NmXyjTGhyVUXY4IxwV5ZyKb1PmoUfKy164mKBwFpCrQ0\nqwZYIEzgCwKBgDpFUNgMvACR23Bmp87wt2W5e40einn4vrVGrRESQIRc6SUGrufL\nVbRUeWe3bnb91bpTgdfAbQ9vyz53z40PgBcseH9lhlJz7TrjcZ/vC5UKFVzgposi\nXNIH20iaH0RxfZgIiBv/oitFp7VBHuAm9Cu3O+1BTlgiP1stjofUPyshAoGBANZn\ngZoPHqMQqS3hHNEYcE6DWsczYQ7Y7mQZgSD2SQSEoJ5diZw1ueszSfswZDuWSTQc\nUnOqJSALmTXGqbnfcIEEHFCMJFZgmECneoh/Wiv60tyLd/Sc8ZW5+a4PYvvp1RQc\nY+BKYic5XxFBodN7dALRZf58Z5GFAKowjQOOhk2JAoGAa/BSRYIGeVBk0GKOLulx\ngGaa/wmRQWwL1vA/bqcG7fWpK7oiuiltzupcQSqglOH4d1te3syYnO4hwurZhGBP\nvSvzabw5ApjYIJr0RRRwU98VtaqGKsB0UCq0KhtdY2DWjPhd+ZD7CqKpzEape8yz\n9sN/DEDODP8MM0ymn8hh62A=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ibd6z@cookbook-d364e.iam.gserviceaccount.com",
+  "client_id": "104881551889276032259",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ibd6z%40cookbook-d364e.iam.gserviceaccount.com"
+}
+
+
+if not len(firebase_admin._apps):
+    cred = credentials.Certificate(cert)
     default_app = firebase_admin.initialize_app(cred)
 
 config = {
@@ -34,6 +48,7 @@ bucket = storage.bucket("cookbook-d364e.appspot.com")
 firebase_pyrebase = pyrebase.initialize_app(config)
 auth = firebase_pyrebase.auth()
 
+print('test')
 
 def signIn(request):
     return render(request, 'index.html', {'show_alert': False})
@@ -42,11 +57,11 @@ def signIn(request):
 def homepage(request):
     email = request.POST.get('email_signin')
     password = request.POST.get('password_signin')
-    urls.email = email
+    utils.setUsername(email)
 
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        return render(request, 'homepage.html', {'email': email})
+        return render(request, 'homepage.html', {'username': settings.user_name})
 
     except:
         print('sign in declined')
@@ -59,15 +74,18 @@ def createNewRecipe(request):
 
 
 def allViews(request):
-    recipes = getAllRecipes()
+    global db
+    recipes = utils.getAllRecipes(db)
 
     return render(request, 'allRecipes.html', {
         'recipes': recipes,
         'tags': tags
     })
 
+
 def filterAllRecipes(request):
-    recipes = getAllRecipes()
+    global db
+    recipes = utils.getAllRecipes(db)
     selected_tags = request.POST.getlist('filter_tags')
     filtered_recipes = []
     for recipe in recipes:
@@ -76,7 +94,6 @@ def filterAllRecipes(request):
                 if recipe not in filtered_recipes:
                     filtered_recipes.append(recipe)
 
-
     return render(request, 'allRecipes.html', {
         'recipes': filtered_recipes,
         'tags': tags,
@@ -84,15 +101,16 @@ def filterAllRecipes(request):
     })
 
 
-
 def viewRecipe(request, uuid):
-    recipe = getRecipeFromUUID(uuid)
+    global db
+    recipe = utils.getRecipeFromUUID(uuid, db)
     return render(request, 'viewRecipe.html', {'recipe': recipe})
 
 
 def deleteRecipe(request, uuid):
-    recipes = getAllRecipes()
-    recipe = getRecipeFromUUID(uuid)
+    global db
+    recipes = utils.getAllRecipes(db)
+    recipe = utils.getRecipeFromUUID(uuid, db)
     try:
         db.collection('recipes').document(recipe.title).delete()
     except:
@@ -102,7 +120,8 @@ def deleteRecipe(request, uuid):
 
 
 def modifyRecipe(request, uuid):
-    recipe = getRecipeFromUUID(uuid)
+    global db
+    recipe = utils.getRecipeFromUUID(uuid, db)
     return render(request, 'modifyRecipe.html', {
         'recipe': recipe,
         'tags': tags
@@ -124,7 +143,7 @@ def saveModification(request, uuid):
         request.POST.get('est_time_modified_recipe'),
         hiddenIMGurl,
         hiddenName,
-        urls.email,
+        settings.user_name,
         "",
         date
     )
@@ -139,7 +158,7 @@ def saveModification(request, uuid):
         'modification_date': recipe.mDate
     }
 
-    recipes = getAllRecipes()
+    recipes = utils.getAllRecipes(db)
 
     db.collection('recipes').document(recipe.title).update(updates)
     return render(request, 'thankyou.html', {'recipes': recipes})
@@ -162,7 +181,7 @@ def addNewRecipe(request):
         request.POST.get('est_time_new_recipe'),
         request.POST.get('url'),
         request.POST.get('urlname'),
-        urls.email,
+        settings.user_name,
         date,
         ""
     )
@@ -180,53 +199,11 @@ def addNewRecipe(request):
         'modification_date': recipe.mDate
     }
 
-    recipes = getAllRecipes()
+    recipes = utils.getAllRecipes(db)
 
     db.collection('recipes').document(recipe.title).set(data)
     return render(request, 'thankyou.html', {'recipes': recipes})
 
 
 def gotohomepage(request):
-    return render(request, 'homepage.html', {'email': urls.email})
-
-
-def getRecipeFromUUID(uuid):
-    recipes = getAllRecipes()
-
-    for recipe in recipes:
-        if recipe.title == uuid:
-            return recipe
-
-
-def getAllRecipes():
-    global db
-    docs = db.collection('recipes').stream()
-    recipes = []
-
-    for doc in docs:
-        dict = doc.to_dict()
-        recipe = Recipe(
-            dict.get("title", "No value found"),
-            dict.get("ingredients", "No value found"),
-            dict.get("method", "No value found"),
-            dict.get("tags", "No value found"),
-            dict.get("est_time", "No value found"),
-            dict.get("img_url", "No value found"),
-            dict.get("img_name", "No value found"),
-            dict.get("author", "No value found"),
-            dict.get("creation_date", "No value found"),
-            dict.get("modification_date", "No value found")
-        )
-        recipes.append(recipe)
-
-    recipes.reverse()
-    return recipes
-
-
-from django import template
-
-register = template.Library()
-
-@register.filter
-def get_type(value):
-    return type(value)
+    return render(request, 'homepage.html', {'username': settings.user_name})
