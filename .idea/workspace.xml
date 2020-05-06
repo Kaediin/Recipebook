@@ -4,9 +4,6 @@
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1586961216477" duration="3909000" />
       <workItem from="1588501576654" duration="2449000" />
       <workItem from="1588670470862" duration="603000" />
-      <workItem from="1588773311420" duration="4807000" />
+      <workItem from="1588773311420" duration="5944000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -111,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588502401452</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits">
+      <created>1588778345663</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588778345663</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +123,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed delete button" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed delete button" />
+    <MESSAGE value="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586637479429">
@@ -134,10 +139,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585591830394" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588502400405">
+    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588778344777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588502400405" />
+    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588778344777" />
     <state x="1276" y="426" key="FileChooserDialogImpl" timestamp="1585595647253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -162,10 +167,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586780959557" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588502406382">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588778346960">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588502406382" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588778346960" />
     <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588773327384">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
