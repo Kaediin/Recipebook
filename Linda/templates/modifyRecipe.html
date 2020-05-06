@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create new recipe</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 {% include "header.html" %}
 <!DOCTYPE html>
@@ -14,12 +15,12 @@
         <input type="text" name="title_new_recipe" placeholder="Title" disabled value="{{ recipe.title }}"><br>
         <div id="containerIngredients">
             <textarea rows="6" name="ingredients_modified_recipe"
-                      placeholder="Ingredients">{{ recipe.ingredients }}</textarea><br>
+                      placeholder="Ingredients" id="ingredientsModification">{{ recipe.ingredients }}</textarea><br>
         </div>
 
         <div id="containerMethod">
             <textarea rows="6" name="method_modified_recipe"
-                      placeholder="Method">{{ recipe.cookingMethod }}</textarea><br>
+                      placeholder="Method" id="methodModification">{{ recipe.cookingMethod }}</textarea><br>
         </div>
 
         <div id="containerGrid">
@@ -63,6 +64,22 @@
 
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
+
+    ClassicEditor
+        .create(document.querySelector('#ingredientsModification')).then(editor => {
+        editor.ui.view.editable.editableElement.style.height = '200px'
+    })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#methodModification')).then(editor => {
+        editor.ui.view.editable.editableElement.style.height = '200px'
+    })
+        .catch(error => {
+            console.error(error);
+        });
 
     function onChangeFile() {
         var files = document.getElementById('files').files[0];

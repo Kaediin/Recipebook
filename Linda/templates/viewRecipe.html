@@ -14,11 +14,16 @@
         </div>
         <div id="ingredients">
             <h3>Ingredients</h3>
-            <pre>{{ recipe.ingredients }}</pre>
+            {% autoescape off %}
+                {{ recipe.ingredients }}
+            {% endautoescape %}
         </div>
         <div id="method">
             <h3>Method</h3>
-            <pre>{{ recipe.cookingMethod }}</pre>
+            {% autoescape off %}
+                {{ recipe.cookingMethod }}
+            {% endautoescape %}
+
         </div>
     </div>
     <div id="img">
@@ -34,7 +39,7 @@
         margin: auto;
     }
 
-    div#img{
+    div#img {
         margin-top: 50px;
     }
 

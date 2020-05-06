@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create new recipe</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 {% include "header.html" %}
 <body>
@@ -12,12 +13,12 @@
         <input type="text" name="title_new_recipe" placeholder="Title" required><br>
         <div id="containerIngredients">
             <h2 style="margin: 0">Ingredients</h2>
-            <textarea rows="6" name="ingredients_new_recipe" placeholder="Ingredients" required></textarea><br>
+            <textarea rows="6" name="ingredients_new_recipe" placeholder="Ingredients" id="ingredientsTextarea" required></textarea><br>
         </div>
 
         <div id="containerMethod">
             <h2 style="margin: 0">Method</h2>
-            <textarea rows="6" name="method_new_recipe" placeholder="Method" required></textarea><br>
+            <textarea rows="6" name="method_new_recipe" placeholder="Method" id="methodTextarea" required></textarea><br>
         </div>
 
         <div id="containerGrid">
@@ -49,6 +50,25 @@
         <input type="hidden" name="urlname" id="urlname">
         <input id="createRecipe" type="button" value="Add recipe" onclick="uploadimage()">
     </form>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#ingredientsTextarea')).then(editor => {
+                editor.ui.view.editable.editableElement.style.height = '200px'
+
+        })
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#methodTextarea')).then(editor => {
+                editor.ui.view.editable.editableElement.style.height = '200px'
+        })
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
 </div>
 
 </body>
@@ -173,13 +193,16 @@
     // Get a reference to the storage service, which is used to create references in your storage bucket
     function uploadimage() {
         let allFieldFilledIn = true;
+
+        document.getElementById("ingredientsTextarea").value = "1";
+
         document.getElementById("form").querySelectorAll("[required]").forEach(function (i) {
             if (!allFieldFilledIn) return;
             if (!i.value) allFieldFilledIn = false;
         });
 
         if (!allFieldFilledIn) {
-            alert('Please fill all the fields (');
+            alert('Please fill all the fields');
         } else if (allFieldFilledIn) {
             var file = document.getElementById("files").files[0];
             if (file != null) {
