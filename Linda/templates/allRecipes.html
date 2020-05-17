@@ -42,7 +42,7 @@
 
     {% for recipe in recipes %}
         {% with uuid=recipe.title %}
-            <div class="perItem">
+            <div class="perItem" onclick="divOnClick()">
                 <div id="gridThumbnail">
                     <img id="thumbnail" src="{{ recipe.img }}" alt=" No picture found :("
                          style="max-width: 300px; max-height: 350px">
@@ -91,6 +91,11 @@
 </html>
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
+
+    function divOnClick() {
+        document.getElementById("view_recipe_form").submit();
+    }
+
     var config = {
         apiKey: "AIzaSyBvdVFeFAfNvk3syObxsVSu4qYQPR3eAE0",
         authDomain: "cookbook-d364e.firebaseapp.com",
@@ -122,6 +127,8 @@
     }
 </script>
 <style>
+
+
 
     form#form_delete{
         display: none;
@@ -190,6 +197,7 @@
         margin: 50px 0 0 0;
         max-width: 450px;
         background: white;
+
     }
 
     img#thumbnail {

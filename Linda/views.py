@@ -3,13 +3,12 @@ from datetime import datetime
 import firebase_admin
 import pyrebase
 from django.shortcuts import render
-from Linda import utils
-from Recipebook import settings
 from firebase_admin import auth
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import storage
 
+from Linda import utils
 from Linda.models import Recipe
 
 cert = {
@@ -48,8 +47,6 @@ bucket = storage.bucket("cookbook-d364e.appspot.com")
 firebase_pyrebase = pyrebase.initialize_app(config)
 auth = firebase_pyrebase.auth()
 
-print('test')
-
 def signIn(request):
     return render(request, 'index.html', {'show_alert': False})
 
@@ -61,10 +58,11 @@ def homepage(request):
 
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        return render(request, 'homepage.html', {'username': settings.user_name})
+        return render(request, 'homepage.html', {'username': 'This doesnt seem to be working'})
 
-    except:
+    except Exception as e:
         print('sign in declined')
+        print(e)
         return render(request, 'index.html', {'show_alert': True})
 
 
@@ -206,4 +204,54 @@ def addNewRecipe(request):
 
 
 def gotohomepage(request):
-    return render(request, 'homepage.html', {'username': settings.user_name})
+    return render(request, 'homepage.html', {'username': ''})
+
+import datetime
+from django.http import HttpResponse
+from django.conf import settings
+
+
+def createBackup(request):
+    global db
+    # os.mkdir("Backups")
+    recipes = utils.getAllRecipes(db)
+    jsons = []
+    filename = 'backup'
+
+
+    for recipe in recipes:
+        data = {
+            "author": recipe.author,
+            "title": recipe.title,
+            "ingredients": recipe.ingredients,
+            "method": recipe.cookingMethod,
+            "cDate": recipe.cDate,
+            "mDate": recipe.mDate,
+            "est_time": recipe.estTime,
+            "img_name": recipe.imgname,
+            "img_url": recipe.img,
+            "tags": recipe.tags,
+        }
+
+        # print(recipe.author)
+        # print(recipe.cDate)
+        # print(recipe.estTime)
+        # print(recipe.imgname)
+        # print(recipe.img)
+        # print(recipe.ingredients)
+        # print(recipe.cookingMethod)
+        # print(recipe.mDate)
+        # print(recipe.tags)
+        # print(recipe.title)
+        jsons.append(data)
+
+    print(jsons)
+
+    response = HttpResponse(str(jsons), content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="backup.json"'
+
+    return response
+
+    # return JsonResponse({'backup': jsons})
+    # context = {'backup': data}
+    # return render(request, 'downloadBackup.html', context)

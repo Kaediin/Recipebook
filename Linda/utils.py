@@ -1,20 +1,23 @@
 from Linda.models import Recipe
-from Recipebook import settings
+from Recipebook.settings import user_name
+from Recipebook.settings import user_email
 
 
 def setUsername(email):
+    global user_name
+    global user_email
     if email == 'linda.schouten.1969@gmail.com':
-        settings.user_email = email
-        settings.user_name = 'Linda Schouten'
+        user_email = email
+        user_name = 'Linda Schouten'
 
     elif email == 'skaedin@gmail.com':
-        settings.user_email = email
-        settings.user_name = 'Kaedin Schouten'
+        user_email = email
+        user_name = 'Kaedin Schouten'
 
 
 
 def isValidSession(request, render):
-    if settings.user_name == '' or settings.user_email == '':
+    if user_name == '' or user_email == '':
         render(request, 'index.html', {})
 
 
@@ -25,16 +28,16 @@ def getAllRecipes(db):
     for doc in docs:
         dict = doc.to_dict()
         recipe = Recipe(
-            dict.get("title", "No value found"),
-            dict.get("ingredients", "No value found"),
-            dict.get("method", "No value found"),
-            dict.get("tags", "No value found"),
-            dict.get("est_time", "No value found"),
-            dict.get("img_url", "No value found"),
-            dict.get("img_name", "No value found"),
-            dict.get("author", "No value found"),
-            dict.get("creation_date", "No value found"),
-            dict.get("modification_date", "No value found")
+            dict.get("title", ""),
+            dict.get("ingredients", ""),
+            dict.get("method", ""),
+            dict.get("tags", ""),
+            dict.get("est_time", ""),
+            dict.get("img_url", ""),
+            dict.get("img_name", ""),
+            dict.get("author", ""),
+            dict.get("creation date", ""),
+            dict.get("modification_date", "")
         )
         recipes.append(recipe)
 

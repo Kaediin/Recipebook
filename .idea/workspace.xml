@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Linda/templates/downloadBackup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipebook/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recipebook/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -99,7 +105,16 @@
       <workItem from="1586961216477" duration="3909000" />
       <workItem from="1588501576654" duration="2449000" />
       <workItem from="1588670470862" duration="603000" />
-      <workItem from="1588773311420" duration="5944000" />
+      <workItem from="1588773311420" duration="10834000" />
+      <workItem from="1588881726832" duration="2319000" />
+      <workItem from="1589012495922" duration="4229000" />
+      <workItem from="1589120381702" duration="220000" />
+      <workItem from="1589541975704" duration="1435000" />
+      <workItem from="1589565127476" duration="63000" />
+      <workItem from="1589576092050" duration="124000" />
+      <workItem from="1589578583930" duration="757000" />
+      <workItem from="1589635248376" duration="1838000" />
+      <workItem from="1589706291543" duration="2702000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -115,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588778345663</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added:&#10; - Quick fix">
+      <created>1588779269818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588779269818</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,7 +146,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed delete button" />
     <MESSAGE value="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits" />
+    <MESSAGE value="Added:&#10; - Quick fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10; - Quick fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586637479429">
@@ -139,42 +162,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585591830394" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588778344777">
+    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588779269036">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588778344777" />
-    <state x="1276" y="426" key="FileChooserDialogImpl" timestamp="1585595647253">
+    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588779269036" />
+    <state x="1276" y="426" key="FileChooserDialogImpl" timestamp="1588789650228">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1276" y="426" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585595647253" />
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1588777598799">
+    <state x="1276" y="426" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588789650228" />
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1589024097141">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588777598799" />
-    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1588777598799">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589024097141" />
+    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1589024097141">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588777598799" />
-    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1588777598799">
+    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589024097141" />
+    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1589024097140">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588777598799" />
-    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1588777598799">
+    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589024097140" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1589024097141">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588777598799" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589024097141" />
     <state x="792" y="168" key="SettingsEditor" timestamp="1586780959557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586780959557" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588778346960">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588779276854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588778346960" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588773327384">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588779276854" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1589707053441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588773327384" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589707053441" />
     <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586782621232">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

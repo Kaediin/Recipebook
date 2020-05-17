@@ -12,5 +12,6 @@ urlpatterns = [
     path('Recipe/Modify/<uuid>/', views.modifyRecipe, name="modifyRecipe"),
     path('Recipe/Modifying/<uuid>/', views.saveModification, name="saveModification"),
     path('Recipe/View/<uuid>/', views.viewRecipe, name="viewRecipe"),
-    path('Home', views.gotohomepage, name="home")
+    path('Home', views.gotohomepage, name="home"),
+    path('Backup', views.createBackup, name="createBackup"),
 ]
