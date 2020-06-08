@@ -1,12 +1,20 @@
-from datetime import datetime
-
 import firebase_admin
 import pyrebase
+import datetime
+
+from datetime import datetime
+
 from django.shortcuts import render
+
 from firebase_admin import auth
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import storage
+
+from Recipebook import settings
+
+from django.http import HttpResponse
+from django.conf import settings
 
 from Linda import utils
 from Linda.models import Recipe
@@ -54,11 +62,11 @@ def signIn(request):
 def homepage(request):
     email = request.POST.get('email_signin')
     password = request.POST.get('password_signin')
-    utils.setUsername(email)
+    utils.setUsername(request, email)
 
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        return render(request, 'homepage.html', {'username': 'This doesnt seem to be working'})
+        return render(request, 'homepage.html', {'username': request.session['username']})
 
     except Exception as e:
         print('sign in declined')
@@ -67,11 +75,17 @@ def homepage(request):
 
 
 def createNewRecipe(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global tags
     return render(request, 'createRecipe.html', {'tags': tags})
 
 
 def allViews(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     recipes = utils.getAllRecipes(db)
 
@@ -141,7 +155,7 @@ def saveModification(request, uuid):
         request.POST.get('est_time_modified_recipe'),
         hiddenIMGurl,
         hiddenName,
-        settings.user_name,
+        request.session['username'],
         "",
         date
     )
@@ -163,6 +177,9 @@ def saveModification(request, uuid):
 
 
 def addNewRecipe(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     global bucket
     date = datetime.now().strftime("%d %B %Y - %H:%M")
@@ -179,7 +196,7 @@ def addNewRecipe(request):
         request.POST.get('est_time_new_recipe'),
         request.POST.get('url'),
         request.POST.get('urlname'),
-        settings.user_name,
+        request.session['username'],
         date,
         ""
     )
@@ -204,11 +221,11 @@ def addNewRecipe(request):
 
 
 def gotohomepage(request):
-    return render(request, 'homepage.html', {'username': ''})
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
 
-import datetime
-from django.http import HttpResponse
-from django.conf import settings
+    return render(request, 'homepage.html', {'username': request.session['username']})
+
 
 
 def createBackup(request):

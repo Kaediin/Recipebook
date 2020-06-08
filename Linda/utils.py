@@ -1,24 +1,41 @@
 from Linda.models import Recipe
-from Recipebook.settings import user_name
-from Recipebook.settings import user_email
+# from django.core.cache import cache
 
+# user_name = ''
+# user_email = ''
+# cache.set('username', 'Hello, World!', 30)
+# cache1 = caches['default']
 
-def setUsername(email):
-    global user_name
-    global user_email
+def setUsername(request, email):
     if email == 'linda.schouten.1969@gmail.com':
-        user_email = email
-        user_name = 'Linda Schouten'
+        request.session['username'] = 'Linda Schouten'
+        # cache.set('username', 'Linda Schouten')
+        # cache.set('user_email', 'linda.schouten.1969@gmail.com')
 
     elif email == 'skaedin@gmail.com':
-        user_email = email
-        user_name = 'Kaedin Schouten'
+        request.session['username'] = 'Kaedin Schouten'
+        # cache.set('username', 'Kaedin Schouten')
+        # cache.set('user_email', 'skaedin@gmail.com')
+
+    elif email == 'jarecschouten@gmail.com':
+        request.session['username'] = 'Jarec Schouten'
+        # cache.set('username', 'Jarec Schouten')
+        # cache.set('user_email', 'jarecschouten@gmail.com')
 
 
+def isValidSession(request):
+    global val
+    try:
+        val = request.session['username']
+        print('Val = '+val)
+        return True
 
-def isValidSession(request, render):
-    if user_name == '' or user_email == '':
-        render(request, 'index.html', {})
+    except KeyError:
+        return False
+
+
+# if cache.get('username') == 'None' or cache.get('user_email') == 'None':
+    #     render(request, 'index.html', {})
 
 
 def getAllRecipes(db):
