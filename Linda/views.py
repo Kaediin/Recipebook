@@ -96,6 +96,9 @@ def allViews(request):
 
 
 def filterAllRecipes(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     recipes = utils.getAllRecipes(db)
     selected_tags = request.POST.getlist('filter_tags')
@@ -114,12 +117,18 @@ def filterAllRecipes(request):
 
 
 def viewRecipe(request, uuid):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     recipe = utils.getRecipeFromUUID(uuid, db)
     return render(request, 'viewRecipe.html', {'recipe': recipe})
 
 
 def deleteRecipe(request, uuid):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     recipes = utils.getAllRecipes(db)
     recipe = utils.getRecipeFromUUID(uuid, db)
@@ -132,6 +141,9 @@ def deleteRecipe(request, uuid):
 
 
 def modifyRecipe(request, uuid):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     recipe = utils.getRecipeFromUUID(uuid, db)
     return render(request, 'modifyRecipe.html', {
@@ -141,6 +153,7 @@ def modifyRecipe(request, uuid):
 
 
 def saveModification(request, uuid):
+
     global db
     date = datetime.now().strftime("%d %B %Y - %H:%M")
     modTags = request.POST.getlist('select_tags_modified')
@@ -229,6 +242,9 @@ def gotohomepage(request):
 
 
 def createBackup(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
     global db
     # os.mkdir("Backups")
     recipes = utils.getAllRecipes(db)

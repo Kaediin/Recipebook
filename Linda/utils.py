@@ -31,6 +31,7 @@ def isValidSession(request):
         return True
 
     except KeyError:
+        print('invalid session')
         return False
 
 
