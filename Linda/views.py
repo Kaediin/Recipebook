@@ -268,7 +268,3 @@ def createBackup(request):
     response['Content-Disposition'] = 'attachment; filename="backup.json"'
 
     return response
-
-    # return JsonResponse({'backup': jsons})
-    # context = {'backup': data}
-    # return render(request, 'downloadBackup.html', context)

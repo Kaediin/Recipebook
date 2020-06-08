@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +113,7 @@
       <workItem from="1590652554345" duration="1967000" />
       <workItem from="1591626494808" duration="123000" />
       <workItem from="1591630842498" duration="29000" />
-      <workItem from="1591632026879" duration="6374000" />
+      <workItem from="1591632026879" duration="7098000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -141,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588779269818</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added:&#10; - Sessions">
+      <created>1591640723443</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591640723443</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +153,8 @@
     <MESSAGE value="removed delete button" />
     <MESSAGE value="Added:&#10; - Textarea utils&#10; - 2 Tags: Cake, Biscuits" />
     <MESSAGE value="Added:&#10; - Quick fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10; - Quick fix" />
+    <MESSAGE value="Added:&#10; - Sessions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10; - Sessions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="873" y="359" key="#Inspections" timestamp="1591636754939">
@@ -170,10 +173,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585591830394" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588779269036">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="780" y="153" key="CommitChangelistDialog2" timestamp="1591640722754">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588779269036" />
+    <state x="780" y="153" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1591640722754" />
     <state x="1276" y="426" key="FileChooserDialogImpl" timestamp="1588789650228">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -206,19 +210,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586780959557" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588779276854">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="736" y="341" key="Vcs.Push.Dialog.v2" timestamp="1591640724836">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588779276854" />
+    <state x="736" y="341" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1591640724836" />
     <state x="1515" y="463" key="com.intellij.ide.util.TipDialog" timestamp="1591626613399">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589791734588" />
     <state x="1515" y="463" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1591626613399" />
-    <state x="976" y="298" width="609" height="804" key="find.popup" timestamp="1591634944982">
+    <state x="976" y="298" width="609" height="804" key="find.popup" timestamp="1591641725219">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="976" y="298" width="609" height="804" key="find.popup/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1591634944982" />
+    <state x="976" y="298" width="609" height="804" key="find.popup/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1591641725219" />
     <state x="1164" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586782621232">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
