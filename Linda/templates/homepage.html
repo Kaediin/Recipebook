@@ -7,15 +7,98 @@
 {% include "header.html" %}
 <body>
 <div id="container">
-    <p>Welcome: {{ username }}</p>
-</div>
+    {% load static %}
+    <div id="titleContainer">
+        <h1>Welcome: {{ username }}</h1><br>
+    </div>
 
+    <div id="tagsTiles">
+        {% for tag in tagThumbnails %}
+            <div class="perTag" onclick="printName('{{ tag.name }}')">
+                <div class="tagImgContainer">
+                    <img class="tagImg" src="{{ tag.imgUrl }}" alt="picture"
+                         style="max-width: 100%; max-height: 100%">
+                </div>
+                <div class="tagName">
+                    <h3>{{ tag.name }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <form method="post" action="{% url 'filterAllRecipes' %}" id="filter_recipes">
+        {% csrf_token %}
+        <input id="hidden_filter" type="hidden" name="filter_tags" value="">
+    </form>
+</div>
 </body>
 </html>
+<script>
+    function printName(tag) {
+        document.getElementById('hidden_filter').value = "" + tag;
+        console.log("Tag: " + document.getElementById('hidden_filter').value + " was clicked!");
+        document.getElementById('filter_recipes').submit();
+    }
+</script>
 <style>
-   div#container{
-       margin: 50px;
-       display: flex;
-       justify-content: center;
-   }
+    div#container {
+        margin: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div#tagsTiles {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .perTag {
+        max-width: 100px;
+        background-color: white;
+        padding: 15px 15px 0 15px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        border: 1px solid black;
+    }
+
+    .perTag:hover {
+        border-radius: 5%;
+        background-color: #003366;
+        transition: 0.8s;
+        color: white;
+        border: 1px solid white;
+    }
+
+    .tagImgContainer {
+        height: 100px;
+    }
+
+    .tagName {
+        text-align: center;
+    }
+
+    @media (min-width: 1025px) {
+        .perTag {
+            max-width: 350px;
+            background-color: white;
+            padding: 15px 15px 0 15px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+
+        .tagImgContainer {
+            height: 225px;
+        }
+    }
+
+
 </style>

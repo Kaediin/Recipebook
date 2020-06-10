@@ -19,3 +19,12 @@ class Recipe:
 
 
 
+class TagThumbnail:
+
+    def __init__(self, name, imgUrl, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = name
+        self.imgUrl = imgUrl
+
+
+

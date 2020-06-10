@@ -1,4 +1,7 @@
 from Linda.models import Recipe
+from Linda import views
+from Linda.models import TagThumbnail
+from Linda import DefaultTagImg
 # from django.core.cache import cache
 
 # user_name = ''
@@ -61,6 +64,30 @@ def getAllRecipes(db):
 
     recipes.reverse()
     return recipes
+
+
+def getAllTagThumbnails(db):
+    default_img = 'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/BM140zDM2okqxq5?alt=media&token=545f93e8-6f63-4a39-b19e-bfddc9f701b4'
+    tags = views.tags
+    tagThumbnails = []
+    isInRecipe = False
+
+    recipes = getAllRecipes(db)
+
+    for i in range(len(tags)):
+        for recipe in recipes:
+            if tags[i] in recipe.tags and isInRecipe == False:
+                isInRecipe = True
+                tagThumbnails.append(TagThumbnail(tags[i], recipe.img))
+                recipes.remove(recipe)
+        if isInRecipe == False:
+            tagThumbnails.append(TagThumbnail(tags[i], DefaultTagImg.DefaultTags[i]))
+        isInRecipe = False
+
+
+
+    return tagThumbnails
+
 
 
 
