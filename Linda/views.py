@@ -47,7 +47,7 @@ config = {
     'measurementId': "G-X0S4HHWN15"
 }
 
-tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad', 'Cake', 'Biscuits']
+tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad', 'Cake', 'Biscuits', 'Drinks']
 
 db = firestore.client()
 bucket = storage.bucket("cookbook-d364e.appspot.com")

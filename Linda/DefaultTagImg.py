@@ -8,4 +8,5 @@ DefaultTags = [
     'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/salad.svg?alt=media&token=e800e650-96dd-43e8-a3bd-7b2ffd51d383',
     'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/cake.svg?alt=media&token=835a60f9-c08f-4c94-aaff-0a156f64b8b3',
     'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/cookies.svg?alt=media&token=2e93c5df-85d7-4f3b-9eae-6461380f0a5f',
+    'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/drinks.svg?alt=media&token=9ed0453d-0fc0-443d-a416-80982f30018e'
 ]
