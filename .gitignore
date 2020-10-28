@@ -1,3 +1,5 @@
-Recipebook/settings.py
+Recipebook/local_settings.py
 Linda/Cookbook-6b61f3e4b995.json
 db.sqlite3
+Linda/firebase_auth.py
+*.pyc
