@@ -4,8 +4,9 @@ from django.db import models
 
 class Recipe:
 
-    def __init__(self, title, ingredients, cookingMethod, tags, estTime, img, imgname, author, cDate, mDate, *args, **kwargs):
+    def __init__(self, recipe_id, title, ingredients, cookingMethod, tags, estTime, img, imgname, author, cDate, mDate, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.recipe_id = recipe_id
         self.title = title
         self.ingredients = ingredients
         self.cookingMethod = cookingMethod

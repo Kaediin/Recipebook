@@ -1,25 +1,19 @@
-import firebase_admin
-import pyrebase
 import datetime
-
 from datetime import datetime
 
-from django.shortcuts import render
-
+import firebase_admin
+import pyrebase
+from django.http import HttpResponse
+from django.shortcuts import render, HttpResponseRedirect
 from firebase_admin import auth
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import storage
-
-from Recipebook import settings
-
-from django.http import HttpResponse
-from django.conf import settings
+from django.contrib import messages
 
 from Linda import utils
+from Linda.firebase_auth import *
 from Linda.models import Recipe
-
-
 
 if not len(firebase_admin._apps):
     cred = credentials.Certificate(cert)
@@ -30,7 +24,7 @@ if not len(firebase_admin._apps):
 tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad', 'Cake', 'Biscuits', 'Drinks']
 
 db = firestore.client()
-bucket = storage.bucket("cookbook-d364e.appspot.com")
+bucket = storage.bucket(storage_bucket)
 firebase_pyrebase = pyrebase.initialize_app(config)
 auth = firebase_pyrebase.auth()
 
@@ -55,7 +49,10 @@ def homepage(request):
     except Exception as e:
         print('sign in declined')
         print(e)
-        return render(request, 'index.html', {'show_alert': True})
+        messages.info(request, 'Invalid credentials')
+        return HttpResponseRedirect("/")
+
+        # return render(request, 'index.html', {'show_alert': True})
 
 
 def createNewRecipe(request):
@@ -144,6 +141,7 @@ def saveModification(request, uuid):
     hiddenName = request.POST.get('urlname_modify')
 
     recipe = Recipe(
+        request.POST.get('recipe_id_modified_recipe'),
         uuid,
         request.POST.get('ingredients_modified_recipe'),
         request.POST.get('method_modified_recipe'),
@@ -184,7 +182,11 @@ def addNewRecipe(request):
     # while len(tags) < 2:
     #     tags.append('')
 
+    recipes = utils.getAllRecipes(db)
+    doc = db.collection('recipes').document()
+
     recipe = Recipe(
+        doc.id,
         request.POST.get('title_new_recipe'),
         request.POST.get('ingredients_new_recipe'),
         request.POST.get('method_new_recipe'),
@@ -197,7 +199,10 @@ def addNewRecipe(request):
         ""
     )
 
+    print(recipe.recipe_id)
+
     data = {
+        'recipe_id': recipe.recipe_id,
         'title': recipe.title,
         'ingredients': recipe.ingredients,
         'method': recipe.cookingMethod,
@@ -210,9 +215,8 @@ def addNewRecipe(request):
         'modification_date': recipe.mDate
     }
 
-    recipes = utils.getAllRecipes(db)
+    doc.set(data)
 
-    db.collection('recipes').document(recipe.title).set(data)
     return render(request, 'thankyou.html', {'recipes': recipes})
 
 

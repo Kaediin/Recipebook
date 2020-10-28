@@ -55,7 +55,7 @@
                                  style="height:20px; width:20px;" alt="">
                         </div>
                         <h3 id="title">{{ recipe.title }}</h3>
-                        {#                        <p id="author">{{ recipe.author }}</p>#}
+                        <p id="author">{{ recipe.author }}</p>
                     </div>
                     <div id="gridButton">
                         <form method="post" action="{% url 'viewRecipe' uuid %}" id="view_recipe_form">
@@ -89,6 +89,7 @@
 </div>
 </body>
 </html>
+<script src="{% static 'admin/js/firebase_auth.js' %}" type="text/javascript"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
 
@@ -96,13 +97,8 @@
         document.getElementById("view_recipe_form").submit();
     }
 
-    var config = {
-        apiKey: "AIzaSyBvdVFeFAfNvk3syObxsVSu4qYQPR3eAE0",
-        authDomain: "cookbook-d364e.firebaseapp.com",
-        databaseURL: "https://cookbook-d364e.firebaseio.com",
-        storageBucket: "cookbook-d364e.appspot.com",
-        messagingSenderId: "24604178353",
-    };
+    var config = getFirebaseConfig();
+
     firebase.initializeApp(config);
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
@@ -128,24 +124,18 @@
 </script>
 <style>
 
-
-
-    form#form_delete{
-        display: none;
-    }
-
-    div#head{
+    div#head {
         display: flex;
         justify-content: center;
     }
 
-    div#selectedTagsContainer{
+    div#selectedTagsContainer {
         display: flex;
         flex-direction: column;
         margin-left: 50px;
     }
 
-    div#selectedTagsContainer h4{
+    div#selectedTagsContainer h4 {
         margin: 5px 0 10px 0;
     }
 

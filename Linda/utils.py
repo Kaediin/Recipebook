@@ -49,6 +49,7 @@ def getAllRecipes(db):
     for doc in docs:
         dict = doc.to_dict()
         recipe = Recipe(
+            dict.get("recipe_id", ""),
             dict.get("title", ""),
             dict.get("ingredients", ""),
             dict.get("method", ""),
