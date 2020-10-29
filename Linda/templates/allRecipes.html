@@ -57,18 +57,16 @@
                         <p id="author">{{ recipe.author }}</p>
                     </div>
                     <div id="gridButton">
-                        <form method="post" action="{% url 'viewRecipe' uuid %}" id="view_recipe_form">
-                            {% csrf_token %}
-                            <input class="view-recipe" type="submit" value="View">
-                            <input type="hidden" value="{{ uuid }}" id="hidden" name="id_value">
-                        </form>
+                        <div id="containerViewRecipeButton" onclick="divOnClickView('{{ uuid }}')">
+                            <a id="view_recipe" href="{% url 'viewRecipe' uuid %}">View</a>
+                        </div>
                         <div id="gridUnderButtons">
-{#                            <form method="post" action="{% url 'deleteRecipe' uuid %}" id="form_delete">#}
-{#                                {% csrf_token %}#}
-{#                                <input class="button_delete" type="button" value="Delete"#}
-{#                                       onclick="removeImages({{ recipe.imgNames }})">#}
-{#                                <input type="hidden" value="{{ recipe }}" id="hidden_recipe" name="recipe_value">#}
-{#                            </form>#}
+                            {#                            <form method="post" action="{% url 'deleteRecipe' uuid %}" id="form_delete">#}
+                            {#                                {% csrf_token %}#}
+                            {#                                <input class="button_delete" type="button" value="Delete"#}
+                            {#                                       onclick="removeImages({{ recipe.imgNames }})">#}
+                            {#                                <input type="hidden" value="{{ recipe }}" id="hidden_recipe" name="recipe_value">#}
+                            {#                            </form>#}
                             <form method="post" action="{% url 'modifyRecipe' uuid %}" id="form_modify">
                                 {% csrf_token %}
                                 <input class="button_modify" type="submit" value="Modify">
@@ -94,6 +92,10 @@
 
     function divOnClick() {
         document.getElementById("view_recipe_form").submit();
+    }
+
+    function divOnClickView(id) {
+        location.href = "{% url 'viewRecipe' uuid=12345 %}".replace(/12345/, id.toString());
     }
 
     var config = getFirebaseConfig();
@@ -134,6 +136,21 @@
     }
 </script>
 <style>
+
+
+    #containerViewRecipeButton {
+        width: 100%;
+        border: 1px solid darkblue;
+        background: white;
+        cursor: pointer;
+        color: darkblue;
+        text-align: center;
+        padding: 5px 0 5px 0;
+    }
+
+    #view_recipe {
+        text-decoration: none;
+    }
 
     div#head {
         display: flex;
@@ -264,14 +281,6 @@
         background: white;
     }
 
-    .view-recipe {
-        width: 100%;
-        padding: 10px 0 10px 0;
-        border: 1px solid darkblue;
-        background: white;
-        cursor: pointer;
-        color: darkblue;
-    }
 
     div#time_recipe {
         display: flex;
@@ -285,8 +294,12 @@
         color: darkgrey;
     }
 
-    .view-recipe:hover {
+    #containerViewRecipeButton:hover {
         background: darkblue;
+        transition: 0.8s;
+    }
+
+    #containerViewRecipeButton:hover a {
         color: white;
         transition: 0.8s;
     }

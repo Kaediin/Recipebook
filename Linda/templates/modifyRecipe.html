@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Create new recipe</title>
@@ -10,9 +11,9 @@
 <body>
 <div id="container">
 
-    <form method="post" action="{% url 'saveModification' recipe.title %}" id="form">
+    <form method="post" action="{% url 'saveModification' recipe.id %}" id="form">
         {% csrf_token %}
-        <input type="text" name="title_new_recipe" placeholder="Title" disabled value="{{ recipe.title }}"><br>
+        <input type="text" name="title_modified_recipe" placeholder="Title" value="{{ recipe.title }}"><br>
         <div id="containerIngredients">
             <textarea rows="6" name="ingredients_modified_recipe"
                       placeholder="Ingredients" id="ingredientsModification">{{ recipe.ingredients }}</textarea><br>
@@ -46,22 +47,24 @@
 
                 <div id="containerFile">
                     <input id="file_button" type="button" onclick="onClickFile()" value="Upload file">
-                    <input style="display: none" type="file" onchange="onChangeFile()" name="imgs_modify_recipe"
+                    <input style="display: none" type="file" onchange="onChangeFile()" name="imgs_modify_recipe" multiple="multiple"
                            id="files">
                 </div>
             </div>
         </div>
 
 
-        <input type="hidden" name="url_modify" id="url" value="{{ recipe.img }}">
-        <input type="hidden" name="urlname_modify" id="urlname" value="{{ recipe.imgname }}">
+        <input type="hidden" name="url_modify" id="url" value="{{ recipe.imageUrls }}">
+        <input type="hidden" name="urlname_modify" id="urlname" value="{{ recipe.imgNames }}">
         <input id="createRecipe" type="button" value="Save Modifications" onclick="uploadimage()">
     </form>
+    <p>names! {{ recipe.imgNames}}</p>
+
 </div>
 
 </body>
 </html>
-<script src="../../Recipebook/static/admin/js/firebase_auth.js" type="text/javascript"></script>
+<script src="{% static 'admin/js/firebase_auth.js' %}" type="text/javascript"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
 
@@ -99,7 +102,12 @@
     // Get a reference to the storage service, which is used to create references in your storage bucket
     function uploadimage() {
         var file = document.getElementById("files").files[0];
+        var previousFileNames = {{ recipe.imgNames|safe }}
         if (file != null) {
+            console.log("File is not null!")
+            removeIMG(previousFileNames)
+
+            /*
             var storage = firebase.storage();
             var storageRef = storage.ref();
             var urlname = makeid(15);
@@ -115,26 +123,77 @@
                     var downloadURL = thisref.snapshot.downloadURL;
                     console.log(urlname);
                     console.log("got url");
-                    removeIMG('{{ recipe.imgname }}');
+
+
+            {#removeIMG('{{ recipe.imgname }}');#}
                     document.getElementById("url").value = downloadURL;
                     document.getElementById("urlname").value = urlname;
                     document.getElementById("form").submit();
 
                 });
+                */
         } else {
+            console.log("File is null!")
             document.getElementById("form").submit();
         }
 
-        function removeIMG(imgname) {
-            if (imgname !== "") {
-                var storage = firebase.storage();
-                var storageRef = storage.ref();
-                var thisref = storageRef.child(imgname);
-                thisref.delete().then(function () {
-                    console.log("deleted successfully");
-                }).catch(function (error) {
-                    console.log(error + "");
+        function removeIMG(fileNames) {
+            if (fileNames != null && fileNames !== "") {
+                fileNames.forEach(function (entry) {
+                    var storage = firebase.storage();
+                    var storageRef = storage.ref();
+                    var thisref = storageRef.child(entry);
+                    thisref.delete().then(function () {
+                        console.log("deleted successfully");
+                    }).catch(function (error) {
+                        console.log(error + "");
+                    });
                 });
+            } else {
+                console.log(fileNames)
+            }
+            uploadArray()
+        }
+    }
+
+    function uploadArray() {
+        let framesUrlName = [];
+        let framesNames = [];
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var counter = 0;
+        var frames = document.getElementById("files").files;
+        console.log("Upload Array Called!");
+        console.log("Frames: " + frames.length);
+
+        for (let i = 0; i < frames.length; i++) {
+
+            let urlNameArray = makeid(15);
+            framesNames.push(urlNameArray);
+            var dlUrl = storageRef.child(urlNameArray).put(frames[i])
+                .then(snapshot => {
+                    return snapshot.ref.getDownloadURL();
+                }).then(downloadURL => {
+                    console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+                    framesUrlName.push(downloadURL);
+                    counter++;
+                    isLimit(counter);
+
+                    return downloadURL;
+                }).catch(error => {
+                    console.log(`Failed to upload file and get link - ${error}`);
+                });
+
+            {#console.log("URLs: "+ framesUrlName.length);#}
+            {#console.log("Names: "+ framesNames.length);#}
+        }
+
+        function isLimit(index) {
+            if (index === frames.length) {
+                {#if (i === (frames.length - 1) && framesNames.length === framesUrlName.length) {#}
+                document.getElementById("url").value = framesUrlName;
+                document.getElementById("urlname").value = framesNames;
+                document.getElementById("form").submit();
             }
         }
     }

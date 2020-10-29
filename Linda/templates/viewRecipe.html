@@ -27,10 +27,10 @@
         </div>
     </div>
     <div id="allImages">
-        {% for imageUrl in recipe.img %}
-        <div class="img">
-            <img src="{{ imageUrl }}" style="max-width: 100%" alt="img">
-        </div>
+        {% for imageUrl in recipe.imageUrls %}
+            <div class="img">
+                <img src="{{ imageUrl }}" style="max-width: 100%" alt="img">
+            </div>
         {% endfor %}
     </div>
 
