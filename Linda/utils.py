@@ -2,6 +2,9 @@ from Linda.models import Recipe
 from Linda import views
 from Linda.models import TagThumbnail
 from Linda import DefaultTagImg
+import json
+
+
 # from django.core.cache import cache
 
 # user_name = ''
@@ -30,7 +33,7 @@ def isValidSession(request):
     global val
     try:
         val = request.session['username']
-        print('Val = '+val)
+        print('Val = ' + val)
         return True
 
     except KeyError:
@@ -39,7 +42,7 @@ def isValidSession(request):
 
 
 # if cache.get('username') == 'None' or cache.get('user_email') == 'None':
-    #     render(request, 'index.html', {})
+#     render(request, 'index.html', {})
 
 
 def getAllRecipes(db):
@@ -85,11 +88,7 @@ def getAllTagThumbnails(db):
             tagThumbnails.append(TagThumbnail(tags[i], DefaultTagImg.DefaultTags[i]))
         isInRecipe = False
 
-
-
     return tagThumbnails
-
-
 
 
 def getRecipeFromUUID(uuid, db):
@@ -98,3 +97,52 @@ def getRecipeFromUUID(uuid, db):
     for recipe in recipes:
         if recipe.title == uuid:
             return recipe
+
+
+def restoreBackup(db, file):
+    json_file = str(file, 'utf-8')
+    data = json.loads(json_file)
+    allRecipes = []
+
+    for json_recipes in data:
+        recipe = Recipe(
+            json_recipes['recipe_id'],
+            json_recipes['title'],
+            json_recipes['ingredients'],
+            json_recipes['method'],
+            json_recipes['tags'],
+            json_recipes['est_time'],
+            json_recipes['img_url'],
+            json_recipes['img_name'],
+            json_recipes['author'],
+            json_recipes['cDate'],
+            json_recipes['mDate'],
+        )
+        allRecipes.append(recipe)
+
+    for recipe in allRecipes:
+        if recipe.recipe_id:
+            data = createDataFromRecipe(recipe)
+            db.collection('recipes').document(recipe.recipe_id).set(data)
+        else:
+            doc = db.collection('recipes').document()
+            recipe.recipe_id = doc.id
+            data = createDataFromRecipe(recipe)
+            doc.set(data)
+
+
+def createDataFromRecipe(recipe):
+    data = {
+        'recipe_id': recipe.recipe_id,
+        'title': recipe.title,
+        'ingredients': recipe.ingredients,
+        'method': recipe.cookingMethod,
+        'tags': recipe.tags,
+        'est_time': recipe.estTime,
+        'author': recipe.author,
+        'creation date': recipe.cDate,
+        'img_url': recipe.img,
+        'img_name': recipe.imgname,
+        'modification_date': recipe.mDate
+    }
+    return data

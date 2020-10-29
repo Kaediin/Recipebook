@@ -67,7 +67,12 @@
     <a class="header_items" href="{% url 'home' %} ">Home</a>
     <a class="header_items" href="{% url 'viewAllRecipies' %}">View all recipes</a>
     <a class="header_items" href="{% url 'createNewRecipe' %}">Add new recipe</a>
-    <a class="header_items" href="{% url 'createBackup' %}">Create backup</a>
+    <a class="header_items elevated_rights" href="{% url 'createBackup' %}">Create backup</a>
+    <a class="header_items elevated_rights" href="{% url 'restoreBackup' %}">Restore backup</a>
+{#    <form enctype="multipart/form-data" id="formImportBackup" method="post" action="{% url 'restoreBackup' %}" style="display: none">#}
+{#        {% csrf_token %}#}
+{#        <input id="json_file_import" name="json_file_import" type="file" style="display: none">#}
+{#    </form>#}
 </div>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 <script>
@@ -78,6 +83,7 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
 </script>
 </body>
 </html>

@@ -114,7 +114,7 @@ def deleteRecipe(request, uuid):
     recipes = utils.getAllRecipes(db)
     recipe = utils.getRecipeFromUUID(uuid, db)
     try:
-        db.collection('recipes').document(recipe.title).delete()
+        db.collection('recipes').document(uuid).delete()
     except:
         print('exception')
 
@@ -201,19 +201,7 @@ def addNewRecipe(request):
 
     print(recipe.recipe_id)
 
-    data = {
-        'recipe_id': recipe.recipe_id,
-        'title': recipe.title,
-        'ingredients': recipe.ingredients,
-        'method': recipe.cookingMethod,
-        'tags': recipe.tags,
-        'est_time': recipe.estTime,
-        'author': recipe.author,
-        'creation date': recipe.cDate,
-        'img_url': recipe.img,
-        'img_name': recipe.imgname,
-        'modification_date': recipe.mDate
-    }
+    data = utils.createDataFromRecipe(recipe)
 
     doc.set(data)
 
@@ -236,40 +224,38 @@ def createBackup(request):
         return render(request, 'index.html', {})
 
     global db
-    # os.mkdir("Backups")
+
     recipes = utils.getAllRecipes(db)
     jsons = []
-    filename = 'backup'
 
     for recipe in recipes:
-        data = {
-            "author": recipe.author,
-            "title": recipe.title,
-            "ingredients": recipe.ingredients,
-            "method": recipe.cookingMethod,
-            "cDate": recipe.cDate,
-            "mDate": recipe.mDate,
-            "est_time": recipe.estTime,
-            "img_name": recipe.imgname,
-            "img_url": recipe.img,
-            "tags": recipe.tags,
-        }
+        data = utils.createDataFromRecipe(recipe)
 
-        # print(recipe.author)
-        # print(recipe.cDate)
-        # print(recipe.estTime)
-        # print(recipe.imgname)
-        # print(recipe.img)
-        # print(recipe.ingredients)
-        # print(recipe.cookingMethod)
-        # print(recipe.mDate)
-        # print(recipe.tags)
-        # print(recipe.title)
         jsons.append(data)
 
     print(jsons)
 
+    currentdateTime = datetime.today().strftime("%a-%d-%b-%Y")
+
     response = HttpResponse(str(jsons), content_type='application/json')
-    response['Content-Disposition'] = 'attachment; filename="backup.json"'
+    response['Content-Disposition'] = f'attachment; filename="Recipebook Backup - {currentdateTime}.json"'
 
     return response
+
+
+def restoreBackup(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
+    return render(request, 'restoreBackup.html', {})
+
+
+def importBackup(request):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
+    file = request.FILES['json_file_import'].read()
+    global db
+    utils.restoreBackup(db, file)
+
+    return gotohomepage(request)

@@ -3,3 +3,4 @@ Linda/Cookbook-6b61f3e4b995.json
 db.sqlite3
 Linda/firebase_auth.py
 *.pyc
+Recipebook/static/admin/js/firebase_auth.js

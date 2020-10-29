@@ -14,4 +14,6 @@ urlpatterns = [
     path('Recipe/View/<uuid>/', views.viewRecipe, name="viewRecipe"),
     path('Home', views.gotohomepage, name="home"),
     path('Backup', views.createBackup, name="createBackup"),
+    path('Restore', views.restoreBackup, name="restoreBackup"),
+    path('Restore-Backup', views.importBackup, name="importBackup")
 ]
