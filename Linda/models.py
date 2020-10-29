@@ -4,19 +4,19 @@ from django.db import models
 
 class Recipe:
 
-    def __init__(self, recipe_id, title, ingredients, cookingMethod, tags, estTime, img, imgname, author, cDate, mDate, *args, **kwargs):
+    def __init__(self, recipe_id, title, ingredients, cookingMethod, tags, estTime, imageUrl, imgname, author, cDate, mDate, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.recipe_id = recipe_id
+        self.id = recipe_id
         self.title = title
         self.ingredients = ingredients
         self.cookingMethod = cookingMethod
         self.tags = tags
-        self.estTime = estTime
-        self.img = img
-        self.imgname = imgname
+        self.estimatedTime = estTime
+        self.imageUrls = imageUrl
+        self.imgNames = imgname
         self.author = author
-        self.cDate = cDate
-        self.mDate = mDate
+        self.creationDate = cDate
+        self.modificationDate = mDate
 
 
 

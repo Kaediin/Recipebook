@@ -39,18 +39,17 @@
 </div>
 <div id="container">
 
-
     {% for recipe in recipes %}
-        {% with uuid=recipe.title %}
-            <div class="perItem" onclick="divOnClick()">
+        {% with uuid=recipe.id %}
+            <div class="perItem">
                 <div id="gridThumbnail">
-                    <img id="thumbnail" src="{{ recipe.img }}" alt=" No picture found :("
+                    <img id="thumbnail" src="{{ recipe.imageUrls.0 }}" alt=" No picture found :("
                          style="max-width: 300px; max-height: 350px">
                 </div>
                 <div id="text-container">
                     <div id="gridBody">
                         <div id="time_recipe">
-                            <p id="time">{{ recipe.estTime }}m</p>
+                            <p id="time">{{ recipe.estimatedTime }}m</p>
                             <img id="timer" src="{% static "admin/img/icon-clock.svg" %}"
                                  style="height:20px; width:20px;" alt="">
                         </div>
@@ -64,12 +63,12 @@
                             <input type="hidden" value="{{ uuid }}" id="hidden" name="id_value">
                         </form>
                         <div id="gridUnderButtons">
-                            <form method="post" action="{% url 'deleteRecipe' uuid %}" id="form_delete">
-                                {% csrf_token %}
-                                <input class="button_delete" type="button" value="Delete"
-                                       onclick="removeIMG('{{ recipe.title }}', '{{ recipe.imgname }}')">
-                                <input type="hidden" value="{{ recipe }}" id="hidden_recipe" name="recipe_value">
-                            </form>
+{#                            <form method="post" action="{% url 'deleteRecipe' uuid %}" id="form_delete">#}
+{#                                {% csrf_token %}#}
+{#                                <input class="button_delete" type="button" value="Delete"#}
+{#                                       onclick="removeImages({{ recipe.imgNames }})">#}
+{#                                <input type="hidden" value="{{ recipe }}" id="hidden_recipe" name="recipe_value">#}
+{#                            </form>#}
                             <form method="post" action="{% url 'modifyRecipe' uuid %}" id="form_modify">
                                 {% csrf_token %}
                                 <input class="button_modify" type="submit" value="Modify">
@@ -102,32 +101,39 @@
     firebase.initializeApp(config);
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
-    function removeIMG(recipeTitle, imgname) {
+    function removeImages(imgnames) {
 
-        var r = confirm("Are you sure you want to delete " + recipeTitle + " ?");
+        var r = confirm("Are you sure you want to delete this ?");
         if (r === true) {
-            if (imgname !== "") {
-                var storage = firebase.storage();
-                var storageRef = storage.ref();
-                var thisref = storageRef.child(imgname);
-                thisref.delete().then(function () {
-                    console.log("deleted successfully");
-                    document.getElementById("form_delete").submit();
-                }).catch(function (error) {
-                    document.getElementById("form_delete").submit();
-                    console.log(error + "");
-                });
+            console.log(imgnames)
+            if (imgnames != null) {
+                imgnames.forEach(function (entry) {
+                        if (entry !== "") {
+                            var storage = firebase.storage();
+                            var storageRef = storage.ref();
+                            var thisref = storageRef.child(entry);
+                            thisref.delete().then(function () {
+                                console.log("deleted successfully");
+                                document.getElementById("form_delete").submit();
+                            }).catch(function (error) {
+                                document.getElementById("form_delete").submit();
+                                console.log(error + "");
+                            });
+                        }
+                    }
+                );
+                {#for (const imageName in imagenames) {#}
+                {#    console.log(imageName)#}
+                /*
+
+
+                 */
             }
             document.getElementById("form_delete").submit();
         }
     }
 </script>
 <style>
-
-
-    form#form_delete {
-        display: none;
-    }
 
     div#head {
         display: flex;

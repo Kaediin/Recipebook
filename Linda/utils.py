@@ -33,7 +33,6 @@ def isValidSession(request):
     global val
     try:
         val = request.session['username']
-        print('Val = ' + val)
         return True
 
     except KeyError:
@@ -50,20 +49,7 @@ def getAllRecipes(db):
     recipes = []
 
     for doc in docs:
-        dict = doc.to_dict()
-        recipe = Recipe(
-            dict.get("recipe_id", ""),
-            dict.get("title", ""),
-            dict.get("ingredients", ""),
-            dict.get("method", ""),
-            dict.get("tags", ""),
-            dict.get("est_time", ""),
-            dict.get("img_url", ""),
-            dict.get("img_name", ""),
-            dict.get("author", ""),
-            dict.get("creation date", ""),
-            dict.get("modification_date", "")
-        )
+        recipe = getRecipeFromFirebaseDoc(doc)
         recipes.append(recipe)
 
     recipes.reverse()
@@ -71,7 +57,6 @@ def getAllRecipes(db):
 
 
 def getAllTagThumbnails(db):
-    default_img = 'https://firebasestorage.googleapis.com/v0/b/cookbook-d364e.appspot.com/o/BM140zDM2okqxq5?alt=media&token=545f93e8-6f63-4a39-b19e-bfddc9f701b4'
     tags = views.tags
     tagThumbnails = []
     isInRecipe = False
@@ -80,11 +65,11 @@ def getAllTagThumbnails(db):
 
     for i in range(len(tags)):
         for recipe in recipes:
-            if tags[i] in recipe.tags and isInRecipe == False:
+            if tags[i] in recipe.tags and not isInRecipe:
                 isInRecipe = True
-                tagThumbnails.append(TagThumbnail(tags[i], recipe.img))
+                tagThumbnails.append(TagThumbnail(tags[i], recipe.imageUrls[0]))
                 recipes.remove(recipe)
-        if isInRecipe == False:
+        if not isInRecipe:
             tagThumbnails.append(TagThumbnail(tags[i], DefaultTagImg.DefaultTags[i]))
         isInRecipe = False
 
@@ -92,11 +77,9 @@ def getAllTagThumbnails(db):
 
 
 def getRecipeFromUUID(uuid, db):
-    recipes = getAllRecipes(db)
-
-    for recipe in recipes:
-        if recipe.title == uuid:
-            return recipe
+    doc = db.collection('recipes').document(uuid).get()
+    recipe = getRecipeFromFirebaseDoc(doc)
+    return recipe
 
 
 def restoreBackup(db, file):
@@ -118,31 +101,57 @@ def restoreBackup(db, file):
             json_recipes['cDate'],
             json_recipes['mDate'],
         )
+
         allRecipes.append(recipe)
 
     for recipe in allRecipes:
-        if recipe.recipe_id:
+        if type(recipe.imgNames) != list:
+            recipe.imgNames = recipe.imgNames.split(',')
+
+        if type(recipe.imageUrls) != list:
+            recipe.imageUrls = recipe.imageUrls.split(',')
+
+        print(f'Recipe: {recipe.title}\nImage names: {recipe.imgNames}\nImage urls: {recipe.imageUrls}')
+
+        if recipe.id:
             data = createDataFromRecipe(recipe)
-            db.collection('recipes').document(recipe.recipe_id).set(data)
+            db.collection('recipes').document(recipe.id).set(data)
         else:
             doc = db.collection('recipes').document()
-            recipe.recipe_id = doc.id
+            recipe.id = doc.id
             data = createDataFromRecipe(recipe)
             doc.set(data)
 
 
 def createDataFromRecipe(recipe):
     data = {
-        'recipe_id': recipe.recipe_id,
+        'recipe_id': recipe.id,
         'title': recipe.title,
         'ingredients': recipe.ingredients,
         'method': recipe.cookingMethod,
         'tags': recipe.tags,
-        'est_time': recipe.estTime,
+        'est_time': recipe.estimatedTime,
         'author': recipe.author,
-        'creation date': recipe.cDate,
-        'img_url': recipe.img,
-        'img_name': recipe.imgname,
-        'modification_date': recipe.mDate
+        'creation date': recipe.creationDate,
+        'img_url': recipe.imageUrls,
+        'img_name': recipe.imgNames,
+        'modification_date': recipe.modificationDate
     }
     return data
+
+
+def getRecipeFromFirebaseDoc(doc):
+    dictionary_recipe = doc.to_dict()
+    return Recipe(
+        dictionary_recipe.get("recipe_id", ""),
+        dictionary_recipe.get("title", ""),
+        dictionary_recipe.get("ingredients", ""),
+        dictionary_recipe.get("method", ""),
+        dictionary_recipe.get("tags", ""),
+        dictionary_recipe.get("est_time", ""),
+        dictionary_recipe.get("img_url", ""),
+        dictionary_recipe.get("img_name", ""),
+        dictionary_recipe.get("author", ""),
+        dictionary_recipe.get("creation date", ""),
+        dictionary_recipe.get("modification_date", "")
+    )

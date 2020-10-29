@@ -70,6 +70,7 @@ def allViews(request):
     global db
     recipes = utils.getAllRecipes(db)
 
+
     return render(request, 'allRecipes.html', {
         'recipes': recipes,
         'tags': tags
@@ -102,6 +103,8 @@ def viewRecipe(request, uuid):
         return render(request, 'index.html', {})
 
     global db
+    print(f'UUID View: {uuid}')
+
     recipe = utils.getRecipeFromUUID(uuid, db)
     return render(request, 'viewRecipe.html', {'recipe': recipe})
 
@@ -111,12 +114,12 @@ def deleteRecipe(request, uuid):
         return render(request, 'index.html', {})
 
     global db
+    print(f'UUID Delete: {uuid}')
     recipes = utils.getAllRecipes(db)
     recipe = utils.getRecipeFromUUID(uuid, db)
-    try:
-        db.collection('recipes').document(uuid).delete()
-    except:
-        print('exception')
+
+    # db.collection('recipes').document(uuid).delete()
+
 
     return render(request, 'thankyou.html', {'recipes': recipes})
 
@@ -157,11 +160,11 @@ def saveModification(request, uuid):
     updates = {
         'ingredients': recipe.ingredients,
         'method': recipe.cookingMethod,
-        'est_time': recipe.estTime,
+        'est_time': recipe.estimatedTime,
         'tags': recipe.tags,
-        'img_url': recipe.img,
-        'img_name': recipe.imgname,
-        'modification_date': recipe.mDate
+        'img_url': recipe.imageUrls,
+        'img_name': recipe.imgNames,
+        'modification_date': recipe.modificationDate
     }
 
     recipes = utils.getAllRecipes(db)
@@ -178,6 +181,8 @@ def addNewRecipe(request):
     global bucket
     date = datetime.now().strftime("%d %B %Y - %H:%M")
     tags = request.POST.getlist('select_tags')
+    urlArray = str(request.POST['url']).split(',')
+    urlNameArray = str(request.POST['urlname']).split(',')
 
     # while len(tags) < 2:
     #     tags.append('')
@@ -192,14 +197,12 @@ def addNewRecipe(request):
         request.POST.get('method_new_recipe'),
         tags,
         request.POST.get('est_time_new_recipe'),
-        request.POST.get('url'),
-        request.POST.get('urlname'),
+        urlArray,
+        urlNameArray,
         request.session['username'],
         date,
         ""
     )
-
-    print(recipe.recipe_id)
 
     data = utils.createDataFromRecipe(recipe)
 
@@ -232,8 +235,6 @@ def createBackup(request):
         data = utils.createDataFromRecipe(recipe)
 
         jsons.append(data)
-
-    print(jsons)
 
     currentdateTime = datetime.today().strftime("%a-%d-%b-%Y")
 

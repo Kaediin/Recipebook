@@ -26,9 +26,14 @@
 
         </div>
     </div>
-    <div id="img">
-        <img src="{{ recipe.img }}" style="max-width: 100%" alt="img">
+    <div id="allImages">
+        {% for imageUrl in recipe.img %}
+        <div class="img">
+            <img src="{{ imageUrl }}" style="max-width: 100%" alt="img">
+        </div>
+        {% endfor %}
     </div>
+
 
 </div>
 </body>
@@ -39,7 +44,7 @@
         margin: auto;
     }
 
-    div#img {
+    .img {
         margin-top: 50px;
     }
 
