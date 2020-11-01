@@ -39,49 +39,55 @@
 {#</div>#}
 <div id="container">
 
-    {% for recipe in recipes %}
-        {% if recipe.is_archived %}
-            {% with uuid=recipe.id %}
-                <div class="perItem">
-                    <div id="gridThumbnail">
-                        <img id="thumbnail" src="{{ recipe.imageUrls.0 }}" alt=" No picture found :("
-                             style="max-width: 300px; max-height: 350px">
-                    </div>
-                    <div id="text-container">
-                        <div id="gridBody">
-                            <div id="time_recipe">
-                                <p id="time">{{ recipe.estimatedTime }}m</p>
-                                <img id="timer" src="{% static "admin/img/icon-clock.svg" %}"
-                                     style="height:20px; width:20px;" alt="">
-                            </div>
-                            <h3 id="title">{{ recipe.title }}</h3>
-                            <p id="author">{{ recipe.author }}</p>
+    {% if recipes %}
+        {% for recipe in recipes %}
+            {% if recipe.is_archived %}
+                {% with uuid=recipe.id %}
+                    <div class="perItem">
+                        <div id="gridThumbnail">
+                            <img id="thumbnail" src="{{ recipe.imageUrls.0 }}" alt=" No picture found :("
+                                 style="max-width: 300px; max-height: 350px">
                         </div>
-                        <div id="gridButton">
-                            <div id="containerViewRecipeButton" onclick="divOnClickView('{{ uuid }}')">
-                                <a class="buttons button_view" href="{% url 'viewRecipe' uuid %}">View</a>
-                            </div>
-                            <div id="gridUnderButtons">
-                                <div class="containerButtonModify" onclick="divOnClickModify('{{ uuid }}')">
-                                    <a class="buttons button_modify" href="{% url 'modifyRecipe' uuid %}">Modify</a>
+                        <div id="text-container">
+                            <div id="gridBody">
+                                <div id="time_recipe">
+                                    <p id="time">{{ recipe.estimatedTime }}m</p>
+                                    <img id="timer" src="{% static "admin/img/icon-clock.svg" %}"
+                                         style="height:20px; width:20px;" alt="">
                                 </div>
+                                <h3 id="title">{{ recipe.title }}</h3>
+                                <p id="author">{{ recipe.author }}</p>
+                            </div>
+                            <div id="gridButton">
+                                <div id="containerViewRecipeButton" onclick="divOnClickView('{{ uuid }}')">
+                                    <a class="buttons button_view" href="{% url 'viewRecipe' uuid %}">View</a>
+                                </div>
+                                <div id="gridUnderButtons">
+                                    <div class="containerButtonModify" onclick="divOnClickModify('{{ uuid }}')">
+                                        <a class="buttons button_modify" href="{% url 'modifyRecipe' uuid %}">Modify</a>
+                                    </div>
 
-                                <div class="containerButtonArchive" onclick="divOnClickArchive('{{ uuid }}')">
-                                    <a class="buttons button_archive" href="{% url 'archiveRecipe' uuid %}">Restore</a>
+                                    <div class="containerButtonArchive" onclick="divOnClickArchive('{{ uuid }}')">
+                                        <a class="buttons button_archive"
+                                           href="{% url 'archiveRecipe' uuid %}">Restore</a>
+                                    </div>
                                 </div>
                             </div>
+                            <div id="tagsContainer">
+                                {% for tag in recipe.tags %}
+                                    <p class="tag">{{ tag }}</p>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div id="tagsContainer">
-                            {% for tag in recipe.tags %}
-                                <p class="tag">{{ tag }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
 
-                </div>
-            {% endwith %}
-        {% endif %}
-    {% endfor %}
+                    </div>
+                {% endwith %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h2>There are no archived recipes..</h2>
+    {% endif %}
+
 </div>
 </body>
 </html>
