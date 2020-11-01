@@ -19,10 +19,11 @@ def homepage(request):
     try:
         user = firebase_utils.auth.sign_in_with_email_and_password(email, password)
         tagThumbnails = firebase_utils.getAllTagThumbnails()
-        return render(request, 'homepage.html', {
-            'username': request.session['username'],
-            'tagThumbnails': tagThumbnails
-        })
+        return gotohomepage(request)
+        # return render(request, 'homepage.html', {
+        #     'username': request.session['username'],
+        #     'tagThumbnails': tagThumbnails
+        # })
 
     except Exception as e:
         print('sign in declined')
@@ -49,18 +50,30 @@ def allViews(request):
         'tags': firebase_utils.tags
     })
 
-
-def filterAllRecipes(request):
+def allArchivedRecipes(request):
     if not utils.isValidSession(request):
         return render(request, 'index.html', {})
 
-    selected_tags = request.POST.getlist('filter_tags')
-    filtered_recipes = utils.filterRecipesBasedOnTags(selected_tags)
+    recipes = firebase_utils.getAllArchivedRecipes()
+    return render(request, 'archivedRecipes.html', {
+        'recipes': recipes,
+        'tags': firebase_utils.tags
+    })
+
+
+def filterAllRecipes(request, tags):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
+    # selected_tags = request.POST.getlist('filter_tags')
+    if type(tags) is not list:
+        tags = tags.split(',')
+    filtered_recipes = utils.filterRecipesBasedOnTags(tags)
 
     return render(request, 'allRecipes.html', {
         'recipes': filtered_recipes,
         'tags': firebase_utils.tags,
-        'filteredTags': selected_tags
+        'filteredTags': tags
     })
 
 
@@ -166,3 +179,12 @@ def renderThankYou(request):
 
     recipes = firebase_utils.getAllRecipes()
     return render(request, 'thankyou.html', {'recipes': recipes})
+
+
+def archiveRecipe(request, uuid):
+    if not utils.isValidSession(request):
+        return render(request, 'index.html', {})
+
+    firebase_utils.archiveRecipe(uuid)
+
+    return renderThankYou(request)

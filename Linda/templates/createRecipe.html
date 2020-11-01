@@ -13,13 +13,13 @@
         {% csrf_token %}
         <input type="text" name="title_new_recipe" placeholder="Title" required><br>
         <div id="containerIngredients">
-            <h2 style="margin: 0">Ingredients</h2>
+            <h2 style="margin: 0;color: white">Ingredients</h2>
             <textarea rows="6" name="ingredients_new_recipe" placeholder="Ingredients" id="ingredientsTextarea"
                       required></textarea><br>
         </div>
 
         <div id="containerMethod">
-            <h2 style="margin: 0">Method</h2>
+            <h2 style="margin: 0;color: white">Method</h2>
             <textarea rows="6" name="method_new_recipe" placeholder="Method" id="methodTextarea"
                       required></textarea><br>
         </div>
@@ -85,6 +85,7 @@
     div#container {
         width: 600px;
         margin: auto;
+        color: black;
     }
 
     textarea {

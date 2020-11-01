@@ -3,42 +3,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All recipies</title>
+    <title>Archived Recipies</title>
 </head>
 {% include "header.html" %}
 <body>
-<div id="head">
-    <div id="title">
-        <h2>All Recipes</h2>
-        <select multiple name="filter_tags" id="selectTag">
-            {% for tag in tags %}
-                <option name="{{ tag }}">{{ tag }}</option>
-            {% endfor %}
-        </select><br>
-        <div id="filterRecipes" onclick="filterRecipes()">
-            <p onclick="">Filter</p>
-        </div>
-
-        <div id="removeFilterRecipes" onclick="{% url 'viewAllRecipes' %}">
-            <p onclick="">Remove Filters</p>
-        </div>
-
-    </div>
-    <div id="selectedTagsContainer">
-        {% if filteredTags|length > 0 %}
-            <h4>Tags selected:</h4>
-            <ul>
-                {% for tag in filteredTags %}
-                    <li>{{ tag }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+{#<div id="head">#}
+{#    <div id="title">#}
+<div id="title">
+    <h2>All Archived Recipes</h2>
 </div>
+{#        <select multiple name="filter_tags" id="selectTag">#}
+{#            {% for tag in tags %}#}
+{#                <option name="{{ tag }}">{{ tag }}</option>#}
+{#            {% endfor %}#}
+{#        </select><br>#}
+{#        <div id="filterRecipes" onclick="filterRecipes()">#}
+{#            <p onclick="">Filter</p>#}
+{#        </div>#}
+{##}
+{#        <div id="removeFilterRecipes" onclick="{% url 'viewAllRecipes' %}">#}
+{#            <p onclick="">Remove Filters</p>#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{#    <div id="selectedTagsContainer">#}
+{#        {% if filteredTags|length > 0 %}#}
+{#            <h4>Tags selected:</h4>#}
+{#            <ul>#}
+{#                {% for tag in filteredTags %}#}
+{#                    <li>{{ tag }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
 <div id="container">
 
     {% for recipe in recipes %}
-        {% if not recipe.is_archived %}
+        {% if recipe.is_archived %}
             {% with uuid=recipe.id %}
                 <div class="perItem">
                     <div id="gridThumbnail">
@@ -65,7 +67,7 @@
                                 </div>
 
                                 <div class="containerButtonArchive" onclick="divOnClickArchive('{{ uuid }}')">
-                                    <a class="buttons button_archive" href="{% url 'archiveRecipe' uuid %}">Archive</a>
+                                    <a class="buttons button_archive" href="{% url 'archiveRecipe' uuid %}">Restore</a>
                                 </div>
                             </div>
                         </div>

@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Linda/firebase_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Linda/templates/archivedRecipes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/firebase_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/firebase_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/thankyou.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/thankyou.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/viewRecipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
     </list>
@@ -22,15 +30,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="035fbfe2-26a3-42d0-b313-7ad92109f2c3" />
+  <component name="JupyterTrust" id="8d9624a8-4b78-4d36-9f4a-0fbac7f4a1e2" />
   <component name="ProjectId" id="1ZoXlv7GfzP2x0zCdTEuJLNharH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -91,7 +99,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -151,7 +159,9 @@
       <workItem from="1603911801015" duration="1473000" />
       <workItem from="1603913347197" duration="6330000" />
       <workItem from="1603985378390" duration="7885000" />
-      <workItem from="1603994732416" duration="8220000" />
+      <workItem from="1603994732416" duration="8435000" />
+      <workItem from="1604247706709" duration="160000" />
+      <workItem from="1604248127107" duration="15214000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -216,11 +226,18 @@
       <option name="project" value="LOCAL" />
       <updated>1603997298322</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fix modification with multiple images #9">
+      <created>1604003163274</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604003163274</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -243,13 +260,18 @@
     <MESSAGE value="Fix 'invalid credentials' message #1" />
     <MESSAGE value="Migrate to ontwikkel db #2" />
     <MESSAGE value="Add option for multiple images #5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add option for multiple images #5" />
+    <MESSAGE value="Fix modification with multiple images #9" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix modification with multiple images #9" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1603997297210">
+    <state x="961" y="437" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1604247816101">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603997297210" />
+    <state x="961" y="437" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604247816101" />
+    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1604003162245">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604003162245" />
     <state x="93" y="93" width="2375" height="1215" key="DiffContextDialog" timestamp="1604000829936">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -258,47 +280,47 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="456" key="FileChooserDialogImpl/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603921607541" />
-    <state width="2517" height="306" key="GridCell.Tab.0.bottom" timestamp="1604002872449">
+    <state width="1215" height="305" key="GridCell.Tab.0.bottom" timestamp="1604269411355">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="306" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604002872449" />
-    <state width="2517" height="306" key="GridCell.Tab.0.center" timestamp="1604002872449">
+    <state width="1215" height="305" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604269411355" />
+    <state width="1215" height="305" key="GridCell.Tab.0.center" timestamp="1604269411354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="306" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604002872449" />
-    <state width="2517" height="306" key="GridCell.Tab.0.left" timestamp="1604002872449">
+    <state width="1215" height="305" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604269411354" />
+    <state width="1215" height="305" key="GridCell.Tab.0.left" timestamp="1604269411354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="306" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604002872449" />
-    <state width="2517" height="306" key="GridCell.Tab.0.right" timestamp="1604002872449">
+    <state width="1215" height="305" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604269411354" />
+    <state width="1215" height="305" key="GridCell.Tab.0.right" timestamp="1604269411354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="306" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604002872449" />
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1603995092671">
+    <state width="1215" height="305" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604269411354" />
+    <state width="1237" height="494" key="GridCell.Tab.1.bottom" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603995092671" />
-    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1603995092671">
+    <state width="1237" height="494" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604256125830" />
+    <state width="1237" height="494" key="GridCell.Tab.1.center" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603995092671" />
-    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1603995092671">
+    <state width="1237" height="494" key="GridCell.Tab.1.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604256125830" />
+    <state width="1237" height="494" key="GridCell.Tab.1.left" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603995092671" />
-    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1603995092671">
+    <state width="1237" height="494" key="GridCell.Tab.1.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604256125830" />
+    <state width="1237" height="494" key="GridCell.Tab.1.right" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603995092671" />
+    <state width="1237" height="494" key="GridCell.Tab.1.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604256125830" />
     <state x="462" y="93" key="SettingsEditor" timestamp="1603909399143">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600072312363" />
     <state x="462" y="93" key="SettingsEditor/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603909399143" />
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1603997299912">
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1604003164297">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603997299912" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604003164297" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602069613370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

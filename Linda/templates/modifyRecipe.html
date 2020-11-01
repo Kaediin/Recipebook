@@ -58,7 +58,6 @@
         <input type="hidden" name="urlname_modify" id="urlname" value="{{ recipe.imgNames }}">
         <input id="createRecipe" type="button" value="Save Modifications" onclick="uploadimage()">
     </form>
-    <p>names! {{ recipe.imgNames}}</p>
 
 </div>
 
@@ -106,39 +105,13 @@
         if (file != null) {
             console.log("File is not null!")
             removeIMG(previousFileNames)
-
-            /*
-            var storage = firebase.storage();
-            var storageRef = storage.ref();
-            var urlname = makeid(15);
-            var thisref = storageRef.child(urlname).put(file);
-            thisref.on('state_changed', function (snapshot) {
-                    console.log("file uploaded succesfully");
-                },
-                function (error) {
-                    alert("error")
-                },
-                function () {
-                    // Upload completed successfully, now we can get the download URL
-                    var downloadURL = thisref.snapshot.downloadURL;
-                    console.log(urlname);
-                    console.log("got url");
-
-
-            {#removeIMG('{{ recipe.imgname }}');#}
-                    document.getElementById("url").value = downloadURL;
-                    document.getElementById("urlname").value = urlname;
-                    document.getElementById("form").submit();
-
-                });
-                */
         } else {
             console.log("File is null!")
             document.getElementById("form").submit();
         }
 
         function removeIMG(fileNames) {
-            if (fileNames != null && fileNames !== "") {
+            if (fileNames[0] !== "") {
                 fileNames.forEach(function (entry) {
                     var storage = firebase.storage();
                     var storageRef = storage.ref();
@@ -214,6 +187,7 @@
     div#container {
         width: 600px;
         margin: auto;
+        color: black;
     }
 
     textarea {

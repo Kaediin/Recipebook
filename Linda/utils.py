@@ -48,7 +48,8 @@ def createDataFromRecipe(recipe):
         'creation date': recipe.creationDate,
         'img_url': recipe.imageUrls,
         'img_name': recipe.imgNames,
-        'modification_date': recipe.modificationDate
+        'modification_date': recipe.modificationDate,
+        'is_archived': recipe.is_archived
     }
     return data
 
@@ -66,5 +67,6 @@ def getRecipeFromFirebaseDoc(doc):
         dictionary_recipe.get("img_name", ""),
         dictionary_recipe.get("author", ""),
         dictionary_recipe.get("creation date", ""),
-        dictionary_recipe.get("modification_date", "")
+        dictionary_recipe.get("modification_date", ""),
+        dictionary_recipe.get("is_archived", None)
     )

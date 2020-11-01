@@ -15,11 +15,11 @@ if not len(firebase_admin._apps):
 
 tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad', 'Cake', 'Biscuits', 'Drinks']
 
-
 db = firestore.client()
 bucket = storage.bucket(storage_bucket)
 firebase_pyrebase = pyrebase.initialize_app(config)
 auth = firebase_pyrebase.auth()
+
 
 def addNewRecipe(request):
     date = datetime.now().strftime("%d %B %Y - %H:%M")
@@ -40,12 +40,14 @@ def addNewRecipe(request):
         urlNameArray,
         request.session['username'],
         date,
-        ""
+        "",
+        False
     )
 
     data = utils.createDataFromRecipe(recipe)
 
     doc.set(data)
+
 
 def getAllTagThumbnails():
     tagThumbnails = []
@@ -70,7 +72,6 @@ def getAllTagThumbnails():
     return tagThumbnails
 
 
-
 def getAllRecipes():
     docs = db.collection('recipes').stream()
     recipes = []
@@ -81,6 +82,7 @@ def getAllRecipes():
 
     recipes.reverse()
     return recipes
+
 
 def getRecipeFromUUID(uuid):
     doc = db.collection('recipes').document(uuid).get()
@@ -106,6 +108,7 @@ def restoreBackup(file):
             json_recipes['author'],
             json_recipes['cDate'],
             json_recipes['mDate'],
+            json_recipes['is_archived']
         )
 
         allRecipes.append(recipe)
@@ -116,8 +119,6 @@ def restoreBackup(file):
 
         if type(recipe.imageUrls) != list:
             recipe.imageUrls = recipe.imageUrls.split(',')
-
-        print(f'Recipe: {recipe.title}\nImage names: {recipe.imgNames}\nImage urls: {recipe.imageUrls}')
 
         if recipe.id:
             data = utils.createDataFromRecipe(recipe)
@@ -130,11 +131,14 @@ def restoreBackup(file):
 
 
 def saveModifications(request, uuid):
+    oldRecipe = getRecipeFromUUID(uuid)
     date = datetime.now().strftime("%d %B %Y - %H:%M")
     modTags = request.POST.getlist('select_tags_modified')
 
-    urlArray = str(request.POST['url_modify']).split(',')
-    urlNameArray = str(request.POST['urlname_modify']).split(',')
+    if request.POST.get('est_time_modified_recipe'):
+        estTime = request.POST.get('est_time_modified_recipe')
+    else:
+        estTime = oldRecipe.estimatedTime
 
     recipe = Recipe(
         uuid,
@@ -142,13 +146,31 @@ def saveModifications(request, uuid):
         request.POST.get('ingredients_modified_recipe'),
         request.POST.get('method_modified_recipe'),
         modTags,
-        request.POST.get('est_time_modified_recipe'),
-        urlArray,
-        urlNameArray,
+        estTime,
+        None,
+        None,
+        # urlArray,
+        # urlNameArray,
         request.session['username'],
         "",
-        date
+        date,
+        False
+        # add logic in this function
     )
+
+    oldNameArray = oldRecipe.imgNames
+    nameArray = str(request.POST['urlname_modify'])
+    oldUrlArray = oldRecipe.imageUrls
+    urlArray = str(request.POST['url_modify'])
+
+    if str(oldNameArray) != str(nameArray) and str(oldUrlArray) != str(urlArray):
+        recipe.imageUrls = urlArray.split(',')
+        recipe.imgNames = nameArray.split(',')
+        print('Image changed')
+    elif str(oldNameArray) == str(nameArray) and str(oldUrlArray) == str(urlArray):
+        recipe.imageUrls = oldRecipe.imageUrls
+        recipe.imgNames = oldRecipe.imgNames
+        print('Image not changed!')
 
     updates = {
         'title': recipe.title,
@@ -158,7 +180,26 @@ def saveModifications(request, uuid):
         'tags': recipe.tags,
         'img_url': recipe.imageUrls,
         'img_name': recipe.imgNames,
-        'modification_date': recipe.modificationDate
+        'modification_date': recipe.modificationDate,
+        'is_archived': recipe.is_archived
     }
 
     db.collection('recipes').document(recipe.id).update(updates)
+
+
+def archiveRecipe(uuid):
+    recipe = getRecipeFromUUID(uuid)
+    update = {
+        'is_archived': not recipe.is_archived
+    }
+    db.collection('recipes').document(uuid).update(update)
+
+def getAllArchivedRecipes():
+    docs = db.collection('recipes').where('is_archived', '==', True).stream()
+    recipes = []
+    for doc in docs:
+        print(doc.id)
+        recipe = utils.getRecipeFromFirebaseDoc(doc)
+        recipes.append(recipe)
+
+    return recipes

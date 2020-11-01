@@ -13,14 +13,14 @@
 </body>
 </html>
 <script>
-    var time = 3;
+    var time = 2;
     setInterval(function () {
         if (time > 0) {
             document.getElementById("timecounter").innerHTML = "You will be redirected in "
                 + time + " seconds. If not then click navigate through the navigation bar";
             time--;
         } else {
-            location.href = "{% url 'viewAllRecipies' %}" //this will redirect to your index
+            location.href = "{% url 'viewAllRecipes' %}" //this will redirect to your index
         }
 
     }, 1000)

@@ -3,7 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     html {
-        background: cornflowerblue;
+        background: #262626;
+        color: white;
     }
 
     body {
@@ -17,7 +18,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #26428b;
+        background-color: #1a1a1a;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
@@ -65,16 +66,13 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a class="header_items" href="{% url 'home' %} ">Home</a>
-    <a class="header_items" href="{% url 'viewAllRecipies' %}">View all recipes</a>
+    <a class="header_items" href="{% url 'viewAllRecipes' %}">View all recipes</a>
     <a class="header_items" href="{% url 'createNewRecipe' %}">Add new recipe</a>
-    <a class="header_items elevated_rights" href="{% url 'createBackup' %}">Create backup</a>
-    <a class="header_items elevated_rights" href="{% url 'restoreBackup' %}">Restore backup</a>
-{#    <form enctype="multipart/form-data" id="formImportBackup" method="post" action="{% url 'restoreBackup' %}" style="display: none">#}
-{#        {% csrf_token %}#}
-{#        <input id="json_file_import" name="json_file_import" type="file" style="display: none">#}
-{#    </form>#}
+    <a class="header_items" href="{% url 'viewAllArchivedRecipes' %}">View all archived recipes</a>
+    <a class="header_items" href="{% url 'createBackup' %}">Create backup</a>
+    <a class="header_items" href="{% url 'restoreBackup' %}">Restore backup</a>
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<span style="font-size:30px;cursor:pointer; color: white" onclick="openNav()">&#9776;</span>
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
