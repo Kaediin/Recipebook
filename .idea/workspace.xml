@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Recipebook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Recipebook.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +151,7 @@
       <workItem from="1604247706709" duration="160000" />
       <workItem from="1604248127107" duration="17498000" />
       <workItem from="1604271933863" duration="14000" />
+      <workItem from="1604331398295" duration="1175000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -281,22 +284,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="456" key="FileChooserDialogImpl/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1603921607541" />
-    <state width="1215" height="305" key="GridCell.Tab.0.bottom" timestamp="1604271920657">
+    <state width="1237" height="304" key="GridCell.Tab.0.bottom" timestamp="1604332553546">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1215" height="305" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604271920657" />
-    <state width="1215" height="305" key="GridCell.Tab.0.center" timestamp="1604271920657">
+    <state width="1237" height="304" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604332553546" />
+    <state width="1237" height="304" key="GridCell.Tab.0.center" timestamp="1604332553546">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1215" height="305" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604271920657" />
-    <state width="1215" height="305" key="GridCell.Tab.0.left" timestamp="1604271920657">
+    <state width="1237" height="304" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604332553546" />
+    <state width="1237" height="304" key="GridCell.Tab.0.left" timestamp="1604332553545">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1215" height="305" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604271920657" />
-    <state width="1215" height="305" key="GridCell.Tab.0.right" timestamp="1604271920657">
+    <state width="1237" height="304" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604332553545" />
+    <state width="1237" height="304" key="GridCell.Tab.0.right" timestamp="1604332553546">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1215" height="305" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604271920657" />
+    <state width="1237" height="304" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604332553546" />
     <state width="1237" height="494" key="GridCell.Tab.1.bottom" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -330,10 +333,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1602069613370" />
-    <state x="1090" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604000612152">
+    <state x="1090" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604331656049">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1090" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604000612152" />
+    <state x="1090" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604331656049" />
     <state x="340" y="436" width="587" height="534" key="find.popup" timestamp="1604001376863">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

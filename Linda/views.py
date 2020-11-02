@@ -14,16 +14,11 @@ def signIn(request):
 def homepage(request):
     email = request.POST.get('email_signin')
     password = request.POST.get('password_signin')
-    utils.setUsername(request, email)
 
     try:
         user = firebase_utils.auth.sign_in_with_email_and_password(email, password)
-        tagThumbnails = firebase_utils.getAllTagThumbnails()
-        return gotohomepage(request)
-        # return render(request, 'homepage.html', {
-        #     'username': request.session['username'],
-        #     'tagThumbnails': tagThumbnails
-        # })
+        utils.setUsername(request, email)
+        return HttpResponseRedirect("/Home")
 
     except Exception as e:
         print('sign in declined')
