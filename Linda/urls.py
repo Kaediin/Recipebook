@@ -2,8 +2,8 @@ from django.urls import path
 from Linda import views
 
 urlpatterns = [
-    path('', views.signIn),
-    path('Sign-in/', views.homepage, name="signin"),
+    path('', views.signIn, name="index"),
+    path('Sign-in/<uid>', views.homepage, name="signin"),
     path('Recipe/Create/', views.createNewRecipe, name="createNewRecipe"),
     path('Recipe/Add/', views.addNewRecipe, name="addRecipe"),
     path('Recipe/View/All/', views.allViews, name="viewAllRecipes"),

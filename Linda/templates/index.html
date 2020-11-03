@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Sign in</title>
+    <meta name="google-signin-client_id"
+          content="24604178353-o0qsb4kbggrbuqmuetlb3eajuuuoq5un.apps.googleusercontent.com">
 </head>
-<body>
 
+<body>
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
@@ -17,18 +20,60 @@
             {% endfor %}
         {% endif %}
 
-        <form action="{% url 'signin' %}" method="post">
-            {% csrf_token %}
-            <input type="email" id="login" class="fadeIn second" name="email_signin" placeholder="login">
-            <input type="password" id="password" class="fadeIn third" name="password_signin" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
-        </form>
+        <div id="containerSignInWithGoogle" onclick="loginUser()">
+            <p>Sign in with google</p>
+        </div>
+
+{#        <form action="{% url 'signin' None %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <input type="email" id="login" class="fadeIn second" name="email_signin" placeholder="login">#}
+{#            <input type="password" id="password" class="fadeIn third" name="password_signin" placeholder="password">#}
+{#            <input type="submit" class="fadeIn fourth" value="Log In">#}
+{#        </form>#}
 
     </div>
 </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+<script src="{% static 'admin/js/firebase_auth.js' %}"></script>
+<script>
+    if (!firebase.apps.length) {
+        var config = getFirebaseConfig()
+        firebase.initializeApp(config)
+    }
+
+    function loginUser() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider)
+    }
+
+    function isLoggedIn() {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                location.href = "{% url 'signin' uid=12345 %}".replace(/12345/, user.uid.toString())
+            }
+        });
+    }
+
+    window.onload = isLoggedIn()
+</script>
 </html>
+
 <style>
+
+    #containerSignInWithGoogle {
+        border: 1px black solid;
+        margin: 10px 50px 0 50px;
+        border-radius: 10px;
+    }
+
+    #containerSignInWithGoogle:hover {
+        cursor: pointer;
+        background: black;
+        color: white;
+        transition: 0.8s;
+    }
+
     /* BASIC */
     html {
         background-color: #333333;
@@ -52,11 +97,11 @@
         font-weight: 600;
         text-transform: uppercase;
         display: inline-block;
-        margin: 40px 8px 10px 8px;
+        margin: 0 8px 10px 8px;
         color: #cccccc;
     }
 
-    #message{
+    #message {
         color: red;
         font-size: smaller;
     }
@@ -82,7 +127,6 @@
         width: 90%;
         max-width: 450px;
         position: relative;
-        padding: 0px;
         -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
         box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
         text-align: center;

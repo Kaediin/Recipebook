@@ -19,7 +19,7 @@
             <p onclick="">Filter</p>
         </div>
 
-        <div id="removeFilterRecipes" onclick="{% url 'viewAllRecipes' %}">
+        <div id="removeFilterRecipes" onclick="removeFilters()">
             <p onclick="">Remove Filters</p>
         </div>
 
@@ -83,8 +83,6 @@
 </div>
 </body>
 </html>
-<script src="{% static 'admin/js/firebase_auth.js' %}" type="text/javascript"></script>
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
 
     function filterRecipes() {
@@ -95,6 +93,10 @@
         } else {
             alert('Please select at least 1 filter')
         }
+    }
+
+    function removeFilters() {
+        location.href = "{% url 'viewAllRecipes' %}"
     }
 
     function divOnClick() {
@@ -113,9 +115,10 @@
         location.href = "{% url 'modifyRecipe' uuid=12345 %}".replace(/12345/, id.toString());
     }
 
-    var config = getFirebaseConfig();
-
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+        var config = getFirebaseConfig()
+        firebase.initializeApp(config)
+    }
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
     function removeImages(imgnames) {

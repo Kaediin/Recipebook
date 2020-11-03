@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Restore Backup</title>
 </head>
 <body>
+{% include 'header.html' %}
 <form enctype="multipart/form-data" id="formImportBackup" method="post" action="{% url 'importBackup' %}">
     {% csrf_token %}
     <input id="json_file_import" name="json_file_import" type="file">

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+<script src="{% static 'admin/js/firebase_auth.js' %}"></script>
 <style>
     html {
         background: #262626;
@@ -24,7 +27,7 @@
         padding-top: 60px;
     }
 
-    .sidenav a {
+    .header_items {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         font-size: 25px;
@@ -50,6 +53,11 @@
         margin-left: 50px;
     }
 
+    p.header_items{
+        color: red;
+        cursor: pointer;
+    }
+
     @media screen and (max-height: 450px) {
         .sidenav {
             padding-top: 15px;
@@ -64,13 +72,14 @@
 <body>
 
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="javascript:void(0)" class="closebtn header_items" onclick="closeNav()">&times;</a>
     <a class="header_items" href="{% url 'home' %} ">Home</a>
     <a class="header_items" href="{% url 'viewAllRecipes' %}">View all recipes</a>
     <a class="header_items" href="{% url 'createNewRecipe' %}">Add new recipe</a>
     <a class="header_items" href="{% url 'viewAllArchivedRecipes' %}">View all archived recipes</a>
-    <a class="header_items" href="{% url 'createBackup' %}">Create backup</a>
-    <a class="header_items" href="{% url 'restoreBackup' %}">Restore backup</a>
+    <a class="header_items elevated_rights" href="{% url 'createBackup' %}">Create backup</a>
+    <a class="header_items elevated_rights" href="{% url 'restoreBackup' %}">Restore backup</a>
+    <p class="header_items" onclick="signOut()">Sign Out</p>
 </div>
 <span style="font-size:30px;cursor:pointer; color: white" onclick="openNav()">&#9776;</span>
 <script>
@@ -81,6 +90,62 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
+    function signOut() {
+        if (!firebase.apps.length) {
+            var config = getFirebaseConfig()
+            firebase.initializeApp(config)
+        }
+        firebase.auth().signOut().then(function () {
+            location.href = "{% url 'index' %}"
+        }).catch(function (error) {
+            console.log(error)
+        });
+    }
+
+    function isStillLoggedIn() {
+        if (!firebase.apps.length) {
+            var config = getFirebaseConfig()
+            firebase.initializeApp(config)
+        }
+
+        const validUsers = ["bngMhxICgzMtEzvgqgTF664392o2", "aa7HYf0a0pPl0NOg7NQurUUIx7q2"]
+
+        var sessionUID = '{{ request.session.uid }}'
+        if (!validUsers.includes(sessionUID)) {
+            console.log('No session')
+            firebase.auth().signOut().then(function () {
+                location.href = "/"
+            }).catch(function (error) {
+                console.log(error)
+                location.href = "/"
+
+            });
+        }
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                if (validUsers.includes(user.uid)) {
+                    console.log('user: ' + user.displayName)
+                    console.log('uid: ' + user.uid)
+                } else {
+                    firebase.auth().signOut().then(function () {
+                        location.href = "/"
+                    }).catch(function (error) {
+                        console.log(error)
+                    });
+                }
+            } else {
+                location.href = "/"
+            }
+        });
+    }
+
+    if ("{{ request.session.uid }}" !== "bngMhxICgzMtEzvgqgTF664392o2"){
+        for (let element of document.querySelectorAll('.elevated_rights')) element.remove();
+    }
+
+    window.onload = isStillLoggedIn()
 
 </script>
 </body>

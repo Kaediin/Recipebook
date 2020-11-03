@@ -14,15 +14,16 @@ def filterRecipesBasedOnTags(selected_tags):
     return filtered_recipes
 
 
-def setUsername(request, email):
-    if email == 'linda.schouten.1969@gmail.com':
-        request.session['username'] = 'Linda Schouten'
-
-    elif email == 'skaedin@gmail.com':
-        request.session['username'] = 'Kaedin Schouten'
-
-    elif email == 'jarecschouten@gmail.com':
-        request.session['username'] = 'Jarec Schouten'
+def setUsername(request, uid):
+    request.session['uid'] = str(uid)
+    # if email == 'linda.schouten.1969@gmail.com':
+    #     request.session['username'] = 'Linda Schouten'
+    #
+    # elif email == 'skaedin@gmail.com':
+    #     request.session['username'] = 'Kaedin Schouten'
+    #
+    # elif email == 'jarecschouten@gmail.com':
+    #     request.session['username'] = 'Jarec Schouten'
 
 
 def isValidSession(request):

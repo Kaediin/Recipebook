@@ -63,8 +63,6 @@
 
 </body>
 </html>
-<script src="{% static 'admin/js/firebase_auth.js' %}" type="text/javascript"></script>
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
 
     ClassicEditor
@@ -94,9 +92,10 @@
         document.getElementById('files').click()
     }
 
-    var config = getFirebaseConfig();
-
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+        var config = getFirebaseConfig()
+        firebase.initializeApp(config)
+    }
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
     function uploadimage() {

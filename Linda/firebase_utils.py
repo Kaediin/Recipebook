@@ -7,7 +7,7 @@ import firebase_admin
 from Linda import DefaultTagImg, utils
 from Linda.firebase_auth import *
 from Linda.models import *
-from firebase_admin import credentials, storage, firestore
+from firebase_admin import credentials, storage, firestore, auth
 
 if not len(firebase_admin._apps):
     cred = credentials.Certificate(cert)
@@ -18,7 +18,7 @@ tags = ['Curry', 'Fish', 'Meat', 'Vegetarian', 'Chicken', 'Starter', 'Salad', 'C
 db = firestore.client()
 bucket = storage.bucket(storage_bucket)
 firebase_pyrebase = pyrebase.initialize_app(config)
-auth = firebase_pyrebase.auth()
+pyrebase_auth = firebase_pyrebase.auth()
 
 
 def addNewRecipe(request):
@@ -203,3 +203,7 @@ def getAllArchivedRecipes():
         recipes.append(recipe)
 
     return recipes
+
+
+def getCurrentByUID(request):
+    return auth.get_user(request.session['uid'])
