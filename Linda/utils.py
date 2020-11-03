@@ -26,7 +26,7 @@ def createDataFromRecipe(recipe):
         'tags': recipe.tags,
         'est_time': recipe.estimatedTime,
         'author_id': recipe.author,
-        'creation date': recipe.creationDate,
+        'creation_date': recipe.creationDate,
         'img_url': recipe.imageUrls,
         'img_name': recipe.imgNames,
         'modification_date': recipe.modificationDate,

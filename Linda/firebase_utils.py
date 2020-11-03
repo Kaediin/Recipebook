@@ -106,8 +106,8 @@ def restoreBackup(file):
             json_recipes['img_url'],
             json_recipes['img_name'],
             json_recipes['author_id'],
-            json_recipes['cDate'],
-            json_recipes['mDate'],
+            json_recipes['creation_date'],
+            json_recipes['modification_date'],
             json_recipes['is_archived']
         )
 
