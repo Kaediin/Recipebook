@@ -16,26 +16,6 @@ def filterRecipesBasedOnTags(selected_tags):
 
 def setUsername(request, uid):
     request.session['uid'] = str(uid)
-    # if email == 'linda.schouten.1969@gmail.com':
-    #     request.session['username'] = 'Linda Schouten'
-    #
-    # elif email == 'skaedin@gmail.com':
-    #     request.session['username'] = 'Kaedin Schouten'
-    #
-    # elif email == 'jarecschouten@gmail.com':
-    #     request.session['username'] = 'Jarec Schouten'
-
-
-def isValidSession(request):
-    global val
-    try:
-        val = request.session['username']
-        return True
-
-    except KeyError:
-        print('invalid session')
-        return False
-
 
 def createDataFromRecipe(recipe):
     data = {
@@ -45,7 +25,7 @@ def createDataFromRecipe(recipe):
         'method': recipe.cookingMethod,
         'tags': recipe.tags,
         'est_time': recipe.estimatedTime,
-        'author': recipe.author,
+        'author_id': recipe.author,
         'creation date': recipe.creationDate,
         'img_url': recipe.imageUrls,
         'img_name': recipe.imgNames,
@@ -66,7 +46,7 @@ def getRecipeFromFirebaseDoc(doc):
         dictionary_recipe.get("est_time", ""),
         dictionary_recipe.get("img_url", ""),
         dictionary_recipe.get("img_name", ""),
-        dictionary_recipe.get("author", ""),
+        dictionary_recipe.get("author_id", ""),
         dictionary_recipe.get("creation date", ""),
         dictionary_recipe.get("modification_date", ""),
         dictionary_recipe.get("is_archived", None)

@@ -38,7 +38,7 @@ def addNewRecipe(request):
         request.POST.get('est_time_new_recipe'),
         urlArray,
         urlNameArray,
-        request.session['username'],
+        request.session['uid'],
         date,
         "",
         False
@@ -105,7 +105,7 @@ def restoreBackup(file):
             json_recipes['est_time'],
             json_recipes['img_url'],
             json_recipes['img_name'],
-            json_recipes['author'],
+            json_recipes['author_id'],
             json_recipes['cDate'],
             json_recipes['mDate'],
             json_recipes['is_archived']
@@ -151,7 +151,7 @@ def saveModifications(request, uuid):
         None,
         # urlArray,
         # urlNameArray,
-        request.session['username'],
+        request.session['uid'],
         "",
         date,
         False

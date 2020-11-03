@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="Fix issue text not wrapping in recipe details #12">
+    <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/firebase_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/firebase_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/archivedRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/archivedRecipes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/createRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/createRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/modifyRecipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/templates/restoreBackup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/restoreBackup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linda/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recipebook/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recipebook/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +155,7 @@
       <workItem from="1604271933863" duration="14000" />
       <workItem from="1604331398295" duration="13076000" />
       <workItem from="1604415186361" duration="3777000" />
-      <workItem from="1604420329346" duration="12356000" />
+      <workItem from="1604420329346" duration="13137000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -264,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604333173066</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Sign in with google? #11">
+      <created>1604434408511</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1604434408511</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +292,8 @@
     <MESSAGE value="Fix modification with multiple images #9" />
     <MESSAGE value="Add reroute for sign in (form resubmission) #8" />
     <MESSAGE value="Fix issue text not wrapping in recipe details #12" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix issue text not wrapping in recipe details #12" />
+    <MESSAGE value="Sign in with google? #11" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sign in with google? #11" />
   </component>
   <component name="WindowStateProjectService">
     <state x="961" y="437" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1604247816101">
@@ -305,10 +304,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="377" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604433375863" />
-    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1604344792266">
+    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1604434407517">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604344792266" />
+    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434407517" />
     <state x="93" y="93" width="2375" height="1215" key="DiffContextDialog" timestamp="1604336663570">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -317,22 +316,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="456" key="FileChooserDialogImpl/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604344111814" />
-    <state width="1177" height="304" key="GridCell.Tab.0.bottom" timestamp="1604434073506">
+    <state width="1177" height="304" key="GridCell.Tab.0.bottom" timestamp="1604434862885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1177" height="304" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434073506" />
-    <state width="1177" height="304" key="GridCell.Tab.0.center" timestamp="1604434073506">
+    <state width="1177" height="304" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434862885" />
+    <state width="1177" height="304" key="GridCell.Tab.0.center" timestamp="1604434862885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1177" height="304" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434073506" />
-    <state width="1177" height="304" key="GridCell.Tab.0.left" timestamp="1604434073506">
+    <state width="1177" height="304" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434862885" />
+    <state width="1177" height="304" key="GridCell.Tab.0.left" timestamp="1604434862884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1177" height="304" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434073506" />
-    <state width="1177" height="304" key="GridCell.Tab.0.right" timestamp="1604434073506">
+    <state width="1177" height="304" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434862884" />
+    <state width="1177" height="304" key="GridCell.Tab.0.right" timestamp="1604434862885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1177" height="304" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434073506" />
+    <state width="1177" height="304" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434862885" />
     <state width="1237" height="494" key="GridCell.Tab.1.bottom" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -358,10 +357,10 @@
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600072312363" />
     <state x="462" y="93" key="SettingsEditor/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604415913690" />
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1604333174453">
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1604434410519">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604333174453" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434410519" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602069613370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -374,10 +373,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1090" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604331656049" />
-    <state x="340" y="436" width="587" height="534" key="find.popup" timestamp="1604001376863">
+    <state x="340" y="436" width="587" height="534" key="find.popup" timestamp="1604434840974">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="340" y="436" width="587" height="534" key="find.popup/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604001376863" />
+    <state x="340" y="436" width="587" height="534" key="find.popup/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604434840974" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1603990512692">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

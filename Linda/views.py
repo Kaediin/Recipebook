@@ -129,7 +129,6 @@ def gotohomepage(request):
     user = firebase_utils.getCurrentByUID(request)
     return render(request, 'homepage.html', {
         'username': user.display_name,
-        # 'username': request.session['username'],
         'tagThumbnails': tagThumbnails
     })
 
