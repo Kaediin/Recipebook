@@ -4,7 +4,7 @@ from django.db import models
 
 class Recipe:
 
-    def __init__(self, recipe_id, title, ingredients, cookingMethod, tags, estTime, imageUrl, imgname, author, cDate, mDate, is_archived, *args, **kwargs):
+    def __init__(self, recipe_id, title, ingredients, cookingMethod, tags, estTime, imageUrl, imgname, author_id, cDate, mDate, is_archived, authorUser, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.id = recipe_id
         self.title = title
@@ -14,10 +14,11 @@ class Recipe:
         self.estimatedTime = estTime
         self.imageUrls = imageUrl
         self.imgNames = imgname
-        self.author = author
+        self.author_id = author_id
         self.creationDate = cDate
         self.modificationDate = mDate
         self.is_archived = is_archived
+        self.authorUser = authorUser
 
 
 
@@ -30,3 +31,11 @@ class TagThumbnail:
 
 
 
+class AuthorUser:
+
+    def __init__(self, displayName, email, phoneNumber, photoURL, uid):
+        self.displayName = displayName
+        self.email = email
+        self.phoneNumber = phoneNumber
+        self.photoURL = photoURL
+        self.uid = uid

@@ -25,6 +25,8 @@ SECRET_KEY = local_settings.settings_secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SESSION_SAVE_EVERY_REQUEST=True
+
 ALLOWED_HOSTS = ['*']
 
 user_email = ''

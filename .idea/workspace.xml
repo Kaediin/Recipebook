@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="41e5f40e-fcb1-41b4-8f6c-4e95fd076d50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/firebase_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/firebase_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/allRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/allRecipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/archivedRecipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/archivedRecipes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Linda/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/templates/thankyou.html" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/templates/thankyou.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linda/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linda/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipebook/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recipebook/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +164,8 @@
       <workItem from="1604415186361" duration="3777000" />
       <workItem from="1604420329346" duration="13987000" />
       <workItem from="1604440555537" duration="4723000" />
-      <workItem from="1604481715938" duration="383000" />
+      <workItem from="1604481715938" duration="8657000" />
+      <workItem from="1604509671960" duration="549000" />
     </task>
     <task id="LOCAL-00001" summary="removed delete button">
       <created>1588502401451</created>
@@ -276,7 +286,35 @@
       <option name="project" value="LOCAL" />
       <updated>1604441454963</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added uid from live">
+      <created>1604482119341</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1604482119341</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added uid from live">
+      <created>1604482209000</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604482209000</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added uid from live">
+      <created>1604482339267</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1604482339267</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added uid from live">
+      <created>1604482380945</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1604482380945</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +345,8 @@
     <MESSAGE value="Add reroute for sign in (form resubmission) #8" />
     <MESSAGE value="Fix issue text not wrapping in recipe details #12" />
     <MESSAGE value="Sign in with google? #11" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sign in with google? #11" />
+    <MESSAGE value="Added uid from live" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added uid from live" />
   </component>
   <component name="WindowStateProjectService">
     <state x="961" y="437" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1604247816101">
@@ -318,10 +357,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="377" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604433375863" />
-    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1604441453970">
+    <state x="904" y="269" key="CommitChangelistDialog2" timestamp="1604482380175">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604441453970" />
+    <state x="904" y="269" key="CommitChangelistDialog2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604482380175" />
     <state x="93" y="93" width="2375" height="1215" key="DiffContextDialog" timestamp="1604336663570">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -330,22 +369,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="456" key="FileChooserDialogImpl/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604344111814" />
-    <state width="1235" height="310" key="GridCell.Tab.0.bottom" timestamp="1604445289958">
+    <state width="1236" height="311" key="GridCell.Tab.0.bottom" timestamp="1604510216507">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1235" height="310" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604445289958" />
-    <state width="1235" height="310" key="GridCell.Tab.0.center" timestamp="1604445289958">
+    <state width="1236" height="311" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604510216507" />
+    <state width="1236" height="311" key="GridCell.Tab.0.center" timestamp="1604510216507">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1235" height="310" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604445289958" />
-    <state width="1235" height="310" key="GridCell.Tab.0.left" timestamp="1604445289958">
+    <state width="1236" height="311" key="GridCell.Tab.0.center/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604510216507" />
+    <state width="1236" height="311" key="GridCell.Tab.0.left" timestamp="1604510216506">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1235" height="310" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604445289958" />
-    <state width="1235" height="310" key="GridCell.Tab.0.right" timestamp="1604445289958">
+    <state width="1236" height="311" key="GridCell.Tab.0.left/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604510216506" />
+    <state width="1236" height="311" key="GridCell.Tab.0.right" timestamp="1604510216507">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1235" height="310" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604445289958" />
+    <state width="1236" height="311" key="GridCell.Tab.0.right/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604510216507" />
     <state width="1237" height="494" key="GridCell.Tab.1.bottom" timestamp="1604256125830">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -366,15 +405,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1073" y="403" key="RollbackChangesDialog/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604271941639" />
-    <state x="462" y="93" key="SettingsEditor" timestamp="1604415913690">
+    <state x="462" y="93" key="SettingsEditor" timestamp="1604508263763">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600072312363" />
-    <state x="462" y="93" key="SettingsEditor/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604415913690" />
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1604441456367">
+    <state x="462" y="93" key="SettingsEditor/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604508263763" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1604482381822">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604441456367" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400/3840.558.1920.1040@0.0.2560.1400" timestamp="1604482381822" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602069613370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

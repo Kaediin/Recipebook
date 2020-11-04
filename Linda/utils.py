@@ -15,7 +15,16 @@ def filterRecipesBasedOnTags(selected_tags):
 
 
 def setUsername(request, uid):
-    request.session['uid'] = str(uid)
+    try:
+        if request.session['uid'] is None:
+            print(f'Session uid ({uid}) is set')
+            request.session['uid'] = str(uid)
+        else:
+            print(f"Session uid already exists: {request.session['uid']}")
+    except KeyError:
+        print(f'Session uid ({uid}) is set')
+        request.session['uid'] = str(uid)
+
 
 def createDataFromRecipe(recipe):
     data = {
@@ -25,7 +34,7 @@ def createDataFromRecipe(recipe):
         'method': recipe.cookingMethod,
         'tags': recipe.tags,
         'est_time': recipe.estimatedTime,
-        'author_id': recipe.author,
+        'author_id': recipe.author_id,
         'creation_date': recipe.creationDate,
         'img_url': recipe.imageUrls,
         'img_name': recipe.imgNames,
@@ -49,5 +58,6 @@ def getRecipeFromFirebaseDoc(doc):
         dictionary_recipe.get("author_id", ""),
         dictionary_recipe.get("creation date", ""),
         dictionary_recipe.get("modification_date", ""),
-        dictionary_recipe.get("is_archived", None)
+        dictionary_recipe.get("is_archived", None),
+        firebase_utils.getAnyUserByUID(dictionary_recipe.get("author_id", ""))
     )

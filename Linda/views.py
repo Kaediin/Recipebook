@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from firebase_admin import auth
 
-from Linda import utils, firebase_utils
+from Linda import utils, firebase_utils, models
 
 
 def signIn(request):
@@ -126,9 +126,9 @@ def gotohomepage(request):
     #     return render(request, 'index.html', {})
 
     tagThumbnails = firebase_utils.getAllTagThumbnails()
-    user = firebase_utils.getCurrentByUID(request)
+    user = firebase_utils.getAnyUserByUID(request.session['uid'])
     return render(request, 'homepage.html', {
-        'username': user.display_name,
+        'username': user,
         'tagThumbnails': tagThumbnails
     })
 

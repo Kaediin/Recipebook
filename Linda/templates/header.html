@@ -117,7 +117,8 @@
 
         var sessionUID = '{{ request.session.uid }}'
         if (!validUsers.includes(sessionUID)) {
-            console.log('No session')
+            console.log('No session for id: '+sessionUID)
+
             firebase.auth().signOut().then(function () {
                 location.href = "/"
             }).catch(function (error) {

@@ -41,7 +41,8 @@ def addNewRecipe(request):
         request.session['uid'],
         date,
         "",
-        False
+        False,
+        None,
     )
 
     data = utils.createDataFromRecipe(recipe)
@@ -108,7 +109,8 @@ def restoreBackup(file):
             json_recipes['author_id'],
             json_recipes['creation_date'],
             json_recipes['modification_date'],
-            json_recipes['is_archived']
+            json_recipes['is_archived'],
+            None
         )
 
         allRecipes.append(recipe)
@@ -154,8 +156,8 @@ def saveModifications(request, uuid):
         request.session['uid'],
         "",
         date,
-        False
-        # add logic in this function
+        False,
+        None
     )
 
     oldNameArray = oldRecipe.imgNames
@@ -198,12 +200,30 @@ def getAllArchivedRecipes():
     docs = db.collection('recipes').where('is_archived', '==', True).stream()
     recipes = []
     for doc in docs:
-        print(doc.id)
         recipe = utils.getRecipeFromFirebaseDoc(doc)
         recipes.append(recipe)
 
     return recipes
 
+def getAnyUserByUID(uid):
+    try:
+        uid = getOntwikkelIds(uid)
+        print(f'UID to check: {uid}')
+        if uid:
+            authUser = auth.get_user(uid)
 
-def getCurrentByUID(request):
-    return auth.get_user(request.session['uid'])
+            user = AuthorUser(
+                authUser.display_name,
+                authUser.email,
+                authUser.phone_number,
+                authUser.photo_url,
+                authUser.uid
+            )
+
+            return user
+        else:
+            print(f'UID is none: {uid}')
+    except firebase_admin.auth.UserNotFoundError:
+
+        print(f'UID not found: {uid}')
+        return None
