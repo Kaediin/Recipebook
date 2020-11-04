@@ -109,7 +109,7 @@
             firebase.initializeApp(config)
         }
 
-        const validUsers = ["bngMhxICgzMtEzvgqgTF664392o2", "aa7HYf0a0pPl0NOg7NQurUUIx7q2"]
+        const validUsers = ["bngMhxICgzMtEzvgqgTF664392o2", "aa7HYf0a0pPl0NOg7NQurUUIx7q2", "CL3RIoaU9YYgK8sr8YmK3gagZZn1"]
 
         var sessionUID = '{{ request.session.uid }}'
         if (!validUsers.includes(sessionUID)) {
@@ -141,7 +141,7 @@
         });
     }
 
-    if ("{{ request.session.uid }}" !== "bngMhxICgzMtEzvgqgTF664392o2"){
+    if ("{{ request.session.uid }}" !== "bngMhxICgzMtEzvgqgTF664392o2" || "{{ request.session.uid }}" !== "aa7HYf0a0pPl0NOg7NQurUUIx7q2"){
         for (let element of document.querySelectorAll('.elevated_rights')) element.remove();
     }
 
