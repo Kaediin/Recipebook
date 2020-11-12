@@ -258,26 +258,30 @@
         console.log("Upload Array Called!");
         console.log("Frames: " + frames.length);
 
-        for (let i = 0; i < frames.length; i++) {
+        if (frames.length !== 0) {
+            for (let i = 0; i < frames.length; i++) {
 
-            let urlNameArray = makeid(15);
-            framesNames.push(urlNameArray);
-            var dlUrl = storageRef.child(urlNameArray).put(frames[i])
-                .then(snapshot => {
-                    return snapshot.ref.getDownloadURL();
-                }).then(downloadURL => {
-                    console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
-                    framesUrlName.push(downloadURL);
-                    counter++;
-                    isLimit(counter);
+                let urlNameArray = makeid(15);
+                framesNames.push(urlNameArray);
+                var dlUrl = storageRef.child(urlNameArray).put(frames[i])
+                    .then(snapshot => {
+                        return snapshot.ref.getDownloadURL();
+                    }).then(downloadURL => {
+                        console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+                        framesUrlName.push(downloadURL);
+                        counter++;
+                        isLimit(counter);
 
-                    return downloadURL;
-                }).catch(error => {
-                    console.log(`Failed to upload file and get link - ${error}`);
-                });
+                        return downloadURL;
+                    }).catch(error => {
+                        console.log(`Failed to upload file and get link - ${error}`);
+                    });
 
-            {#console.log("URLs: "+ framesUrlName.length);#}
-            {#console.log("Names: "+ framesNames.length);#}
+                {#console.log("URLs: "+ framesUrlName.length);#}
+                {#console.log("Names: "+ framesNames.length);#}
+            }
+        } else if (frames.length === 0){
+            isLimit(frames.length)
         }
 
         function isLimit(index) {
