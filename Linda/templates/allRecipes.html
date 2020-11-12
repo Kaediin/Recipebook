@@ -41,7 +41,7 @@
         {% if not recipe.is_archived %}
             {% with uuid=recipe.id %}
                 <div class="perItem">
-                    <div id="gridThumbnail">
+                    <div id="gridThumbnail" onclick="divOnClickView('{{ uuid }}')">
                         <img id="thumbnail" src="{{ recipe.imageUrls.0 }}" alt=" No picture found :("
                              style="max-width: 300px; max-height: 350px">
                     </div>
@@ -56,9 +56,9 @@
                             <p id="author">{{ recipe.authorUser.displayName }}</p>
                         </div>
                         <div id="gridButton">
-                            <div id="containerViewRecipeButton" onclick="divOnClickView('{{ uuid }}')">
-                                <a class="buttons button_view" href="{% url 'viewRecipe' uuid %}">View</a>
-                            </div>
+{#                            <div id="containerViewRecipeButton" onclick="divOnClickView('{{ uuid }}')">#}
+{#                                <a class="buttons button_view" href="{% url 'viewRecipe' uuid %}">View</a>#}
+{#                            </div>#}
                             <div id="gridUnderButtons">
                                 <div class="containerButtonModify" onclick="divOnClickModify('{{ uuid }}')">
                                     <a class="buttons button_modify" href="{% url 'modifyRecipe' uuid %}">Modify</a>
